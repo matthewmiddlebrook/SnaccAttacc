@@ -1,0 +1,340 @@
+fileFormatVersion: 2
+guid: d332e79408bd6e44ba19f432ca2918f4
+ModelImporter:
+  serializedVersion: 26
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: m302Ceiling
+    second: {fileID: 2100000, guid: 0af361451e6d83d43b35051521922de0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: m315Counter
+    second: {fileID: 2100000, guid: b929a211bf33306488de360243af9fff, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mBlackCarpetTiles
+    second: {fileID: 2100000, guid: 5026f97fadd48fa4290edfd4d5f65484, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mBlackCeiling
+    second: {fileID: 2100000, guid: 0c15453e9950fdb419c0cd13c2d70cbf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mBlackPlastic
+    second: {fileID: 2100000, guid: 8284418d0ccde98418b8cc381427cd35, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mBlackScreen
+    second: {fileID: 2100000, guid: 7a30f5716e4a1744abec3d7f0f4487fc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mBlackWall
+    second: {fileID: 2100000, guid: 11bf729126190d4498ada476f6304f5f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mBlueWall
+    second: {fileID: 2100000, guid: 2feee5bdb4ca75543a8b0bd6c87cee43, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mBlueWhiteWall
+    second: {fileID: 2100000, guid: e1b742e546e42304d9b071962564618e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mBrick
+    second: {fileID: 2100000, guid: 4003af13fb7fab84da9b8500cde7d21e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mCeiling
+    second: {fileID: 2100000, guid: 43ae41013c556e048aa3a4bd1084fb05, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mCeiling316
+    second: {fileID: 2100000, guid: 7178c94bac1717043a7a286b5acb4a89, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mCinderBlocks
+    second: {fileID: 2100000, guid: c7c6a6f3f6497b54a9cabac3ca8881d4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mCircularFlooring
+    second: {fileID: 2100000, guid: e1d28c19ee9b09a4a850ce686be5e360, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mCremeMetal
+    second: {fileID: 2100000, guid: d3ea26a0163acde41b7e7e25345c855d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mDarkGrayPlastic
+    second: {fileID: 2100000, guid: 2a03a51cafecfa44aae2a68645a0ee4a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mDarkTrim
+    second: {fileID: 2100000, guid: 35edc27270d80d84fa7d89b65a40968c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mDoorHandleMat
+    second: {fileID: 2100000, guid: e157328acd7a7ca4398c6f71eb96f27b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mDoorMetalFrame
+    second: {fileID: 2100000, guid: 3799aeaea4fe2a946aabc11e66698f67, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mDropCeiling
+    second: {fileID: 2100000, guid: de235279c2a4f91448c53e474762d0b0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mElevator
+    second: {fileID: 2100000, guid: 08e26b3275f98e742bac6524e14fbb67, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mFireAlarm
+    second: {fileID: 2100000, guid: 9ce8a0d8ed93abe42b07c565dd8d099b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mFireAlarmLight
+    second: {fileID: 2100000, guid: 4c97fbf386162ab44ae6c74bd9a24a7e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mGlass
+    second: {fileID: 2100000, guid: bafdf0cb5145d1b438babe143d3ce7fc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mGlassMetal
+    second: {fileID: 2100000, guid: c7611119eb97e4d49a3632d2420a733d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mGrayPlastic
+    second: {fileID: 2100000, guid: 743e92d44cc8fbd43a1f91e3db2e40b2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mGrayWall
+    second: {fileID: 2100000, guid: 5eaa62684f7851f409915bf0ceebbdf0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mGreenScreenWall
+    second: {fileID: 2100000, guid: d262b995b96c3554f8074a81123d350e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mGreenWall
+    second: {fileID: 2100000, guid: 9194ec5e2e6cc6744be0e528908daa46, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mLightCreamWhiteWall
+    second: {fileID: 2100000, guid: bae2325e07fbde74d9e263a6b22cc6f8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mLightDimmer
+    second: {fileID: 2100000, guid: cbdc848adface19428a48e246d780a8a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mLightGrayPlastic
+    second: {fileID: 2100000, guid: b4d1968cf3d3c1147a7cb80e68860322, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mMetal
+    second: {fileID: 2100000, guid: b4a93b3152615304bacefe2dcb595880, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mNetworkingWindow
+    second: {fileID: 2100000, guid: e6e62984aca658549b27060bab5e635c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mOutlet
+    second: {fileID: 2100000, guid: 0cc879ab85eea9841a4928e22bace574, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mPlainCeiling
+    second: {fileID: 2100000, guid: 27558ad4b78e80b41a04a632c2e07cf3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mPurpleWall
+    second: {fileID: 2100000, guid: 153df190e882b474ba91ae42a219f283, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mRedOrangeCarpet
+    second: {fileID: 2100000, guid: 85759d175fd37e94dad0f1dce0f6e263, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mRedWall
+    second: {fileID: 2100000, guid: f547e9eed238f0d439d88d4edb235ab3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mSwiperLight
+    second: {fileID: 2100000, guid: 2d4549d786522d24599cbe3690399454, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mThirdFloorSign
+    second: {fileID: 2100000, guid: 1dc696312a12f7d46815b239836b280b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mWallpaperWall
+    second: {fileID: 2100000, guid: 9c7bf32399c7a8d44a6d6827a9212eeb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mWaterGreenLCD
+    second: {fileID: 2100000, guid: 4d7eca178288ea946b04dbf05719bb84, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mWhiteMetal
+    second: {fileID: 2100000, guid: db5a2eacbd80c2347bfd423998c5a774, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mWhiteWallpaperWall
+    second: {fileID: 2100000, guid: 640f9725c5925c141bda0b651368cbb1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mWood
+    second: {fileID: 2100000, guid: c89660edb743fd14e9e0150d4b5a396e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mWoodFlooring
+    second: {fileID: 2100000, guid: 831d1f09bb0890d40a6f242ff743240b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mWoodTrim
+    second: {fileID: 2100000, guid: 635d6057314dc3a48a44f4522d793d30, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mWoodTrimDoor
+    second: {fileID: 2100000, guid: bb679431d6b412a46923c17b7e3432ef, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
