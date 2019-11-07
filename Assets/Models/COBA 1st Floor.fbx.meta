@@ -17,6 +17,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: mBrick
+    second: {fileID: 2100000, guid: 4003af13fb7fab84da9b8500cde7d21e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: mCremeMetal
     second: {fileID: 2100000, guid: d3ea26a0163acde41b7e7e25345c855d, type: 2}
   - first:
@@ -39,6 +44,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: mGlassMetal
     second: {fileID: 2100000, guid: c7611119eb97e4d49a3632d2420a733d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mGrayPlastic
+    second: {fileID: 2100000, guid: 743e92d44cc8fbd43a1f91e3db2e40b2, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -102,6 +112,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: mWhiteWallpaperWall
+    second: {fileID: 2100000, guid: 640f9725c5925c141bda0b651368cbb1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: mWood
     second: {fileID: 2100000, guid: c89660edb743fd14e9e0150d4b5a396e, type: 2}
   - first:
@@ -109,6 +124,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: mWoodFlooring
     second: {fileID: 2100000, guid: 831d1f09bb0890d40a6f242ff743240b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mWoodTrim
+    second: {fileID: 2100000, guid: 635d6057314dc3a48a44f4522d793d30, type: 2}
   materials:
     importMaterials: 1
     materialName: 1
