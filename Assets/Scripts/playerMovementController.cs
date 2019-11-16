@@ -21,6 +21,8 @@ public class playerMovementController : MonoBehaviour
     private Vector3 forwardVector;
     private Vector3 horizontalVector;
     private Vector3 verticalVector;
+    private playerAttackController attackScript;
+    private playerHealth healthScript;
     private touchInputController inputScript;
     
 
@@ -28,6 +30,8 @@ public class playerMovementController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        attackScript = GetComponent<playerAttackController>();
+        healthScript = GetComponent<playerHealth>();
         inputScript = GameObject.FindGameObjectWithTag("touchInputController").GetComponent<touchInputController>();
     }
 
@@ -38,7 +42,9 @@ public class playerMovementController : MonoBehaviour
 
         rotationY += Mathf.Clamp(Input.GetAxis("Mouse Y") * lookSpeed, minY, maxY);
 
-        transform.localEulerAngles = new Vector3(0, inputScript.GetRotationY(), 0);
+        if (healthScript.isAlive) {
+            transform.localEulerAngles = new Vector3(0, inputScript.GetRotationY(), 0);
+        }
 
         if (Physics.Raycast(transform.position, -transform.up, out hit, 100.0f)) {
             yDis = Vector3.Distance(new Vector3(0, transform.position.y, 0), new Vector3(0, hit.point.y,0));
@@ -60,6 +66,11 @@ public class playerMovementController : MonoBehaviour
     }
 
     void Move() {
-        rb.velocity = forwardVector + horizontalVector;
+        if (!attackScript.isAttacking && healthScript.isAlive) {
+            rb.velocity = forwardVector + horizontalVector;
+        }
+        else {
+            rb.velocity = new Vector3(0, 0, 0);
+        }
     }
 }

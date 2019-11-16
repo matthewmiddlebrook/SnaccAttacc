@@ -53,6 +53,9 @@ public class playerInteractionController : MonoBehaviour
         		managerScript.points >= managerScript.snackCost &&
         		GetComponent<playerHealth>().currentHealth < GetComponent<playerHealth>().maxHealth) {
         		managerScript.PurchaseSnack();
+        	} else
+			if (type == "door" && activeObject.GetComponent<DoorInteraction>().isInteractable) {
+        		activeObject.GetComponent<DoorInteraction>().Interact();
         	}
 
         	delay = repeatedInputDelayDuration;
@@ -92,6 +95,9 @@ public class playerInteractionController : MonoBehaviour
         		interactTextObject.SetActive(true);
         		interactTextObject.transform.GetChild(1).GetComponent<UnityEngine.UI.Text>().text = 
         			"Press SPACE to purchase snacks! (" + managerScript.snackCost + ")";
+        	} else if (type == "door" && activeObject.GetComponent<DoorInteraction>().isInteractable) {
+        		interactTextObject.SetActive(true);
+        		interactTextObject.transform.GetChild(1).GetComponent<UnityEngine.UI.Text>().text = "Hold SPACE to open door!";
         	}
         	else {
         		interactTextObject.SetActive(false);
@@ -131,6 +137,10 @@ public class playerInteractionController : MonoBehaviour
     		type = "healthStation";
     		activeObject = other.gameObject;
     	}
+		if (other.gameObject.CompareTag("door")) {
+    		type = "door";
+    		activeObject = other.gameObject;
+    	}
     }
 
     void OnTriggerExit(Collider other) {
@@ -151,6 +161,10 @@ public class playerInteractionController : MonoBehaviour
     		activeObject = null;
     	}
     	if (other.gameObject.CompareTag("healthStation")) {
+    		type = null;
+    		activeObject = null;
+    	}
+		if (other.gameObject.CompareTag("door")) {
     		type = null;
     		activeObject = null;
     	}

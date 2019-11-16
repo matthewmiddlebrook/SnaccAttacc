@@ -31,7 +31,9 @@ public class playerViewController : MonoBehaviour
 
         rotationY = Mathf.Clamp(rotationY += Input.GetAxis("Mouse Y") * lookSpeed, minY, maxY);
 
-        transform.localEulerAngles = new Vector3(inputScript.GetRotationX(), inputScript.GetRotationY(), 0);
+        if (healthScript && healthScript.isAlive) {
+            transform.localEulerAngles = new Vector3(inputScript.GetRotationX(), inputScript.GetRotationY(), 0);
+        }
 
         transform.position = player.transform.position - offset;
     }
