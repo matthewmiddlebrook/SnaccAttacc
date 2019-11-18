@@ -127,7 +127,7 @@ public class playerInteractionController : MonoBehaviour
     		activeObject = other.gameObject;
 			Outline[] outlines = other.gameObject.GetComponentsInChildren<Outline>();
 			foreach (Outline o in outlines) {
-				o.eraseRenderer = false;
+				o.enabled = true;
 			}
     	}
     	if (other.gameObject.CompareTag("blockage")) {
@@ -137,6 +137,10 @@ public class playerInteractionController : MonoBehaviour
     	if (other.gameObject.CompareTag("balloonStation")) {
     		type = "balloonStation";
     		activeObject = other.gameObject;
+			Outline[] outlines = other.gameObject.GetComponentsInChildren<Outline>();
+			foreach (Outline o in outlines) {
+				o.enabled = true;
+			}
     	}
     	if (other.gameObject.CompareTag("healthStation")) {
     		type = "healthStation";
@@ -158,7 +162,7 @@ public class playerInteractionController : MonoBehaviour
     		activeObject = null;
 			Outline[] outlines = other.gameObject.GetComponentsInChildren<Outline>();
 			foreach (Outline o in outlines) {
-				o.eraseRenderer = true;
+				o.enabled = false;
 			}
     	}
     	if (other.gameObject.CompareTag("blockage")) {
@@ -168,6 +172,10 @@ public class playerInteractionController : MonoBehaviour
     	if (other.gameObject.CompareTag("balloonStation")) {
     		type = null;
     		activeObject = null;
+			Outline[] outlines = other.gameObject.GetComponentsInChildren<Outline>();
+			foreach (Outline o in outlines) {
+				o.enabled = false;
+			}
     	}
     	if (other.gameObject.CompareTag("healthStation")) {
     		type = null;
