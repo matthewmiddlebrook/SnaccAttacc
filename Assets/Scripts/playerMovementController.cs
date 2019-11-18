@@ -14,7 +14,6 @@ public class playerMovementController : MonoBehaviour
     private Vector3 moveDirection;
     private Rigidbody rb;
     private float rotationX;
-    private float rotationY;
     private float yDis;
 	private RaycastHit hit;
     private Vector3 moveVector;
@@ -33,17 +32,21 @@ public class playerMovementController : MonoBehaviour
         attackScript = GetComponent<playerAttackController>();
         healthScript = GetComponent<playerHealth>();
         inputScript = GameObject.FindGameObjectWithTag("touchInputController").GetComponent<touchInputController>();
+
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
     void Update()
     {
-        rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * lookSpeed;
-
-        rotationY += Mathf.Clamp(Input.GetAxis("Mouse Y") * lookSpeed, minY, maxY);
+        rotationX += Input.GetAxis("Mouse X") * lookSpeed;
 
         if (healthScript.isAlive) {
-            transform.localEulerAngles = new Vector3(0, inputScript.GetRotationY(), 0);
+            if (Application.isEditor) {
+                transform.localEulerAngles = new Vector3(0, rotationX, 0);
+            } else {
+                transform.localEulerAngles = new Vector3(0, inputScript.GetRotationY(), 0);
+            }
         }
 
         if (Physics.Raycast(transform.position, -transform.up, out hit, 100.0f)) {
@@ -58,6 +61,11 @@ public class playerMovementController : MonoBehaviour
     void FixedUpdate() {
     	float horizontalMovement = Mathf.Clamp(inputScript.GetHorizontalMovement(), -speedLimit, speedLimit);
         float verticalMovement = Mathf.Clamp(inputScript.GetVerticalMovement(), -speedLimit, speedLimit);
+
+        if (Application.isEditor) {
+            horizontalMovement = Input.GetAxis("Horizontal") * 50;
+            verticalMovement = Input.GetAxis("Vertical") * 50;
+        }
 
 		forwardVector = transform.forward * movementSpeed * verticalMovement;
         horizontalVector = transform.right * movementSpeed * horizontalMovement;

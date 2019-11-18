@@ -27,12 +27,16 @@ public class playerViewController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * lookSpeed;
+        rotationX += Input.GetAxis("Mouse X") * lookSpeed;
+        rotationY = Mathf.Clamp(rotationY -= Input.GetAxis("Mouse Y") * lookSpeed, minY, maxY);
 
-        rotationY = Mathf.Clamp(rotationY += Input.GetAxis("Mouse Y") * lookSpeed, minY, maxY);
 
         if (healthScript && healthScript.isAlive) {
-            transform.localEulerAngles = new Vector3(inputScript.GetRotationX(), inputScript.GetRotationY(), 0);
+            if (Application.isEditor) {
+                transform.localEulerAngles = new Vector3(rotationY, rotationX, 0);
+            } else {
+                transform.localEulerAngles = new Vector3(inputScript.GetRotationX(), inputScript.GetRotationY(), 0);
+            }
         }
 
         transform.position = player.transform.position - offset;
