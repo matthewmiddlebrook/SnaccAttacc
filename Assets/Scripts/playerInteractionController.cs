@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using cakeslice;
 using UnityEngine;
 
 public class playerInteractionController : MonoBehaviour
@@ -124,6 +125,10 @@ public class playerInteractionController : MonoBehaviour
     	if (other.gameObject.CompareTag("refillStation")) {
     		type = "refillStation";
     		activeObject = other.gameObject;
+			Outline[] outlines = other.gameObject.GetComponentsInChildren<Outline>();
+			foreach (Outline o in outlines) {
+				o.eraseRenderer = false;
+			}
     	}
     	if (other.gameObject.CompareTag("blockage")) {
     		type = "blockage";
@@ -151,6 +156,10 @@ public class playerInteractionController : MonoBehaviour
     	if (other.gameObject.CompareTag("refillStation")) {
     		type = null;
     		activeObject = null;
+			Outline[] outlines = other.gameObject.GetComponentsInChildren<Outline>();
+			foreach (Outline o in outlines) {
+				o.eraseRenderer = true;
+			}
     	}
     	if (other.gameObject.CompareTag("blockage")) {
     		type = null;
