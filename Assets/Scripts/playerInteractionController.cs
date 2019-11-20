@@ -133,6 +133,11 @@ public class playerInteractionController : MonoBehaviour
     	if (other.gameObject.CompareTag("blockage")) {
     		type = "blockage";
     		activeObject = other.gameObject;
+			blockage b = other.gameObject.GetComponent<blockage>();
+			foreach (GameObject d in b.doors) {
+				if (d.GetComponent<DoorInteraction>().isInteractable)
+					d.GetComponent<Outline>().enabled = true;
+			}
     	}
     	if (other.gameObject.CompareTag("balloonStation")) {
     		type = "balloonStation";
@@ -168,6 +173,10 @@ public class playerInteractionController : MonoBehaviour
     	if (other.gameObject.CompareTag("blockage")) {
     		type = null;
     		activeObject = null;
+			blockage b = other.gameObject.GetComponent<blockage>();
+			foreach (GameObject g in b.doors) {
+				g.GetComponent<Outline>().enabled = false;
+			}
     	}
     	if (other.gameObject.CompareTag("balloonStation")) {
     		type = null;

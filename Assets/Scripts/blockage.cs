@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using cakeslice;
 using UnityEngine;
 
 public class blockage : MonoBehaviour
@@ -8,6 +9,8 @@ public class blockage : MonoBehaviour
     public int blockagePrice;
     public float delay;
 	public GameObject[] roomSpawns;
+
+    public GameObject[] doors;
 
     [Header("Runtime Variables")]
     public bool isInteractable = true;
@@ -25,12 +28,19 @@ public class blockage : MonoBehaviour
     }
 
     public void ClearBlockage() {
-    	transform.GetChild(0).GetComponent<Animator>().Play("clear");
+    	foreach (GameObject d in doors) {
+            d.GetComponent<DoorInteraction>().Interact();
+        }
+        // transform.GetChild(0).GetComponent<Animator>().Play("clear");
     	isInteractable = false;
 
     	gameManager tmp = GameObject.FindGameObjectWithTag("gameManager").GetComponent<gameManager>();
     	tmp.SubtractPoints(blockagePrice);
     	tmp.AddSpawns(roomSpawns);
+
+        foreach (GameObject d in doors) {
+            d.GetComponent<Outline>().enabled = false;
+        }
 
     	Destroy(gameObject, delay);
     }
