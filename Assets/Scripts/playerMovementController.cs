@@ -12,7 +12,7 @@ public class playerMovementController : MonoBehaviour
     public float onGroundThreshold;
 
     private Vector3 moveDirection;
-    private Rigidbody rb;
+    private CharacterController cc;
     private float rotationX;
     private float yDis;
 	private RaycastHit hit;
@@ -28,7 +28,7 @@ public class playerMovementController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        cc = GetComponent<CharacterController>();
         attackScript = GetComponent<playerAttackController>();
         healthScript = GetComponent<playerHealth>();
         inputScript = GameObject.FindGameObjectWithTag("touchInputController").GetComponent<touchInputController>();
@@ -75,10 +75,11 @@ public class playerMovementController : MonoBehaviour
 
     void Move() {
         if (!attackScript.isAttacking && healthScript.isAlive) {
-            rb.velocity = forwardVector + horizontalVector;
+            // rb.velocity = forwardVector + horizontalVector;
+            cc.SimpleMove(forwardVector+horizontalVector);
         }
         else {
-            rb.velocity = new Vector3(0, 0, 0);
+            // rb.velocity = new Vector3(0, 0, 0);
         }
     }
 }

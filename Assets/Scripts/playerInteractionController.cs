@@ -19,7 +19,7 @@ public class playerInteractionController : MonoBehaviour
     private playerAttackController attackScript;
     private gameManager managerScript;
     private bool isInteracting = false;
-    private Rigidbody rb;
+	private CharacterController cc;
 
     // Start is called before the first frame update
     void Start()
@@ -28,13 +28,13 @@ public class playerInteractionController : MonoBehaviour
         interactTextObject.SetActive(false);
         attackScript = GetComponent<playerAttackController>();
         managerScript = GameObject.FindGameObjectWithTag("gameManager").GetComponent<gameManager>();
-        rb = GetComponent<Rigidbody>();
+		cc = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isInteracting && readyForInput && rb.velocity.magnitude < movementThreshold) {
+        if (isInteracting && readyForInput && cc.velocity.magnitude < movementThreshold) {
         	if (type == "barrier" && activeObject.GetComponent<barrierScript>().isInteractable) {
         		activeObject.GetComponent<barrierScript>().Interact();
         	}
