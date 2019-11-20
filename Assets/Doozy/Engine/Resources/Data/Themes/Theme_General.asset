@@ -1,3 +1,75 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:0e8627f64c7b87ccd7028a9279e122bd735b272be0f3f4292e49b684f10d2197
-size 2531
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a151aae416b497c9eaea8aa5ac1c555, type: 3}
+  m_Name: Theme_General
+  m_EditorClassIdentifier: 
+  m_themeName: General
+  SerializedGuid: dbc6536a9bd2254396f7d4e4c4a9f2cc
+  m_activeVariant:
+    m_variantName: Default
+    SerializedGuid: 362761141dc44c43824f173fcfe3cd20
+    Colors:
+    - m_color: {r: 1, g: 1, b: 1, a: 1}
+      SerializedGuid: 29212f51a1f2624185fe0ef1f99477c5
+    - m_color: {r: 1, g: 1, b: 1, a: 1}
+      SerializedGuid: 94ba7fe06d1a624f8cfa7f015e331a62
+    - m_color: {r: 1, g: 1, b: 1, a: 1}
+      SerializedGuid: c394a6333faee045856e0842c58516e6
+    - m_color: {r: 1, g: 1, b: 1, a: 1}
+      SerializedGuid: c06a21297dca6443a0474913cb12f655
+    - m_color: {r: 1, g: 1, b: 1, a: 1}
+      SerializedGuid: 88e3978f911cdc46b628e1d3380e6042
+    - m_color: {r: 1, g: 1, b: 1, a: 1}
+      SerializedGuid: bba6979f298d0845967d3c6f64d16f80
+    Sprites: []
+    Textures: []
+    Fonts: []
+    FontAssets: []
+  ColorLabels:
+  - m_label: Primary
+    SerializedGuid: 29212f51a1f2624185fe0ef1f99477c5
+  - m_label: Secondary
+    SerializedGuid: 94ba7fe06d1a624f8cfa7f015e331a62
+  - m_label: Accent 1
+    SerializedGuid: c394a6333faee045856e0842c58516e6
+  - m_label: Accent 2
+    SerializedGuid: c06a21297dca6443a0474913cb12f655
+  - m_label: Text
+    SerializedGuid: 88e3978f911cdc46b628e1d3380e6042
+  - m_label: Disabled
+    SerializedGuid: bba6979f298d0845967d3c6f64d16f80
+  SpriteLabels: []
+  TextureLabels: []
+  FontLabels: []
+  FontAssetLabels: []
+  VariantsNames:
+  - Default
+  Variants:
+  - m_variantName: Default
+    SerializedGuid: 362761141dc44c43824f173fcfe3cd20
+    Colors:
+    - m_color: {r: 1, g: 1, b: 1, a: 1}
+      SerializedGuid: 29212f51a1f2624185fe0ef1f99477c5
+    - m_color: {r: 1, g: 1, b: 1, a: 1}
+      SerializedGuid: 94ba7fe06d1a624f8cfa7f015e331a62
+    - m_color: {r: 1, g: 1, b: 1, a: 1}
+      SerializedGuid: c394a6333faee045856e0842c58516e6
+    - m_color: {r: 1, g: 1, b: 1, a: 1}
+      SerializedGuid: c06a21297dca6443a0474913cb12f655
+    - m_color: {r: 1, g: 1, b: 1, a: 1}
+      SerializedGuid: 88e3978f911cdc46b628e1d3380e6042
+    - m_color: {r: 1, g: 1, b: 1, a: 1}
+      SerializedGuid: bba6979f298d0845967d3c6f64d16f80
+    Sprites: []
+    Textures: []
+    Fonts: []
+    FontAssets: []

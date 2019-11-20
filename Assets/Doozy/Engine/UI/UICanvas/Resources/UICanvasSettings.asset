@@ -1,3 +1,18 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:58acdc4d19a1e4d9427d143562e3788b94bba203a0a2bcec9243e691e174667b
-size 559
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4072814a6baa62045b119994d13bcd72, type: 3}
+  m_Name: UICanvasSettings
+  m_EditorClassIdentifier: 
+  database: {fileID: 11400000, guid: 74b0b25b9bea7de47855aba89b86e3ad, type: 2}
+  DontDestroyCanvasOnLoad: 1
+  RenamePrefix: 'Canvas - '
+  RenameSuffix: 

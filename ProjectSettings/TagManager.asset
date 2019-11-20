@@ -1,3 +1,53 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:13315ba870de29456167f7dab500f10a2c6582fd8c90e906d86dc2af3b82d723
-size 539
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - balloonAOE
+  - balloon
+  - cameraObject
+  - balloonSpawn
+  - player
+  - touchInputController
+  - rightJoystick
+  - leftJoystick
+  - door
+  - interactTextObject
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0

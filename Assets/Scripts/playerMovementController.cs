@@ -49,13 +49,13 @@ public class playerMovementController : MonoBehaviour
             }
         }
 
-        if (Physics.Raycast(transform.position, -transform.up, out hit, 100.0f)) {
-            yDis = Vector3.Distance(new Vector3(0, transform.position.y, 0), new Vector3(0, hit.point.y,0));
-            if (yDis > onGroundThreshold) {
-                Vector3 tmp = new Vector3(0, yDis - 1, 0);
-                transform.position -= tmp;
-            }
-        }
+        // if (Physics.Raycast(transform.position, -transform.up, out hit, 100.0f)) {
+        //     yDis = Vector3.Distance(new Vector3(0, transform.position.y, 0), new Vector3(0, hit.point.y,0));
+        //     if (yDis > onGroundThreshold) {
+        //         Vector3 tmp = new Vector3(0, yDis - 1, 0);
+        //         transform.position -= tmp;
+        //     }
+        // }
     }
 
     void FixedUpdate() {

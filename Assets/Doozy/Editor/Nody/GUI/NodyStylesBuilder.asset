@@ -1,3 +1,15 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9c8c5ee5c3dab1b6a2f062558994e3a3dd477a67f22857f9bbb48eecc87c0e47
-size 531
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b564a241e03a6df49bd84f59df82b143, type: 3}
+  m_Name: NodyStylesBuilder
+  m_EditorClassIdentifier: 
+  DarkSkin: {fileID: 11400000, guid: 7d53ff58b18b7094594ad084e02e40c4, type: 2}
+  LightSkin: {fileID: 11400000, guid: ccd0b0ca715185049901f3123837be8b, type: 2}
