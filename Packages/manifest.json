@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "com.cakeslice.outline-effect": "https://github.com/cakeslice/Outline-Effect.git",
     "com.unity.cinemachine": "2.3.4",
     "com.unity.collab-proxy": "1.2.16",
     "com.unity.ext.nunit": "1.0.0",
@@ -42,11 +41,5 @@
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0"
-  },
-  "lock": {
-    "com.cakeslice.outline-effect": {
-      "hash": "2f1c911450e120f739953a4879d10a0802d4932f",
-      "revision": "HEAD"
-    }
   }
 }
