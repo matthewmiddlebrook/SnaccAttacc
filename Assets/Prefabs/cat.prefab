@@ -194,6 +194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stopDistance: 2
   target: {fileID: 0}
+  spawn: {fileID: 0}
 --- !u!114 &8855985310194276862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,5 +225,5 @@ MonoBehaviour:
   playerDamage: 5
   currentHealth: 0
   odds: 80
-  emptyBalloonPickupObject: {fileID: 4620192480868602224, guid: f182e00c7c5724ac699af14da0ac97e3,
+  emptyBalloonPickupObject: {fileID: 4418405464256811, guid: e6fdab222124141fab5a661ef55bedd1,
     type: 3}
