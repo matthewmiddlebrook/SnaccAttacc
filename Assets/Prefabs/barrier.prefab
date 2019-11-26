@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3939805055824102592}
   - component: {fileID: 3939805055824102593}
   - component: {fileID: 3939805055824102598}
+  - component: {fileID: 2430103656604300770}
   m_Layer: 0
   m_Name: plankTwo
   m_TagString: Untagged
@@ -112,6 +113,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2430103656604300770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3939805055824102596}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 2
+  eraseRenderer: 0
 --- !u!1 &3939805056153046727
 GameObject:
   m_ObjectHideFlags: 0
@@ -204,6 +219,7 @@ GameObject:
   - component: {fileID: 3939805056467173962}
   - component: {fileID: 3939805056467173963}
   - component: {fileID: 3939805056467173960}
+  - component: {fileID: 6276868773855476256}
   m_Layer: 0
   m_Name: plankThree
   m_TagString: Untagged
@@ -303,6 +319,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6276868773855476256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3939805056467173966}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 2
+  eraseRenderer: 0
 --- !u!1 &3939805056721193498
 GameObject:
   m_ObjectHideFlags: 0
@@ -316,6 +346,7 @@ GameObject:
   - component: {fileID: 3939805056721193494}
   - component: {fileID: 3939805056721193495}
   - component: {fileID: 3939805056721193492}
+  - component: {fileID: 448748528659170427}
   m_Layer: 0
   m_Name: plankOne
   m_TagString: Untagged
@@ -415,6 +446,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &448748528659170427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3939805056721193498}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 2
+  eraseRenderer: 0
 --- !u!1 &3939805056847375687
 GameObject:
   m_ObjectHideFlags: 0
@@ -428,6 +473,7 @@ GameObject:
   - component: {fileID: 3939805056847375683}
   - component: {fileID: 3939805056847375680}
   - component: {fileID: 3939805056847375681}
+  - component: {fileID: 6126551273469179723}
   m_Layer: 0
   m_Name: plankFour
   m_TagString: Untagged
@@ -527,6 +573,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6126551273469179723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3939805056847375687}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 2
+  eraseRenderer: 0
 --- !u!1 &3939805057631908251
 GameObject:
   m_ObjectHideFlags: 0
@@ -540,6 +600,7 @@ GameObject:
   - component: {fileID: 3939805057631908247}
   - component: {fileID: 3939805057631908244}
   - component: {fileID: 3939805057631908245}
+  - component: {fileID: 7574066451506167543}
   m_Layer: 0
   m_Name: plankFive
   m_TagString: Untagged
@@ -639,3 +700,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7574066451506167543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3939805057631908251}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 2
+  eraseRenderer: 0
