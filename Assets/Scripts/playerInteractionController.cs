@@ -73,32 +73,32 @@ public class playerInteractionController : MonoBehaviour
         if (activeObject != null) {
         	if (type == "barrier" && activeObject.GetComponent<barrierScript>().isInteractable) {
         		interactTextObject.SetActive(true);
-        		interactTextObject.transform.GetChild(1).GetComponent<UnityEngine.UI.Text>().text = "Hold SPACE to repair!";
+        		interactTextObject.transform.GetChild(1).GetComponent<UnityEngine.UI.Text>().text = "Tap and hold to repair!";
         	}
         	else if (type == "refillStation" && attackScript.emptyBalloonCount > 0) {
         		interactTextObject.SetActive(true);
-        		interactTextObject.transform.GetChild(1).GetComponent<UnityEngine.UI.Text>().text = "Hold SPACE to fill balloons!";
+        		interactTextObject.transform.GetChild(1).GetComponent<UnityEngine.UI.Text>().text = "Tap and hold to fill balloons!";
         	}
         	else if (type == "blockage" && activeObject.GetComponent<blockage>().isInteractable) {
         		interactTextObject.SetActive(true);
         		interactTextObject.transform.GetChild(1).GetComponent<UnityEngine.UI.Text>().text = 
-        			"Press SPACE to clear rubble (" + activeObject.GetComponent<blockage>().blockagePrice + ")";
+        			"Tap to open door (" + activeObject.GetComponent<blockage>().blockagePrice + ")";
         	}
         	else if (type == "balloonStation" &&
         		managerScript.points >= managerScript.balloonPackCost) {
         		interactTextObject.SetActive(true);
         		interactTextObject.transform.GetChild(1).GetComponent<UnityEngine.UI.Text>().text = 
-        			"Press SPACE to purchase balloons! (" + managerScript.balloonPackCost + ")";
+        			"Tap to purchase balloons! (" + managerScript.balloonPackCost + ")";
         	}
         	else if (type == "healthStation" &&
         		managerScript.points >= managerScript.snackCost &&
         		GetComponent<playerHealth>().currentHealth < GetComponent<playerHealth>().maxHealth) {
         		interactTextObject.SetActive(true);
         		interactTextObject.transform.GetChild(1).GetComponent<UnityEngine.UI.Text>().text = 
-        			"Press SPACE to purchase snacks! (" + managerScript.snackCost + ")";
+        			"Tap to purchase snacks! (" + managerScript.snackCost + ")";
         	} else if (type == "door" && activeObject.GetComponent<DoorInteraction>().isInteractable) {
         		interactTextObject.SetActive(true);
-        		interactTextObject.transform.GetChild(1).GetComponent<UnityEngine.UI.Text>().text = "Hold SPACE to open door!";
+        		interactTextObject.transform.GetChild(1).GetComponent<UnityEngine.UI.Text>().text = "Tap and hold to open door!";
         	}
         	else {
         		interactTextObject.SetActive(false);
