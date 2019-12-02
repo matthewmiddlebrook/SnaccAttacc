@@ -186,4 +186,13 @@ public class gameManager : MonoBehaviour
         SubtractPoints(snackCost);
         GameObject.FindGameObjectWithTag("player").GetComponent<playerHealth>().AddHealth(snackAmount);
     }
+
+
+    public void GameOver() {
+
+    }
+
+    public void Restart() {
+
+    }
 }
