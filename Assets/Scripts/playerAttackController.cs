@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class playerAttackController : MonoBehaviour
 {
     [Header("Settings")]
-    public GameObject balloonObject;
+    public GameObject[] balloonObjects;
     public float throwingSpeed;
     public float destroyDelay;
     public int coolDownDuration;
@@ -111,7 +111,7 @@ public class playerAttackController : MonoBehaviour
     }
 
     void Fire() {
-    	GameObject tmp = Instantiate(balloonObject,
+    	GameObject tmp = Instantiate(balloonObjects[Random.Range(0, balloonObjects.Length)],
     		transform.position,
     		Quaternion.identity
     	);
