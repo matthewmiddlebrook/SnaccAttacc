@@ -121,6 +121,10 @@ public class playerInteractionController : MonoBehaviour
     	if (other.gameObject.CompareTag("barrier")) {
     		type = "barrier";
     		activeObject = other.gameObject;
+			Outline[] outlines = other.gameObject.GetComponentsInChildren<Outline>();
+			foreach (Outline o in outlines) {
+				o.enabled = true;
+			}
     	}
     	if (other.gameObject.CompareTag("refillStation")) {
     		type = "refillStation";
@@ -161,6 +165,10 @@ public class playerInteractionController : MonoBehaviour
     	if (other.gameObject.CompareTag("barrier")) {
     		type = null;
     		activeObject = null;
+			Outline[] outlines = other.gameObject.GetComponentsInChildren<Outline>();
+			foreach (Outline o in outlines) {
+				o.enabled = false;
+			}
     	}
     	if (other.gameObject.CompareTag("refillStation")) {
     		type = null;

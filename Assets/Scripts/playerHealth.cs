@@ -21,10 +21,13 @@ public class playerHealth : MonoBehaviour
     private int healDelay;
     private GameObject healText;
 
+    private gameManager manager;
+
     // Start is called before the first frame update
     void Start()
     {
-        maxHealth = GameObject.FindGameObjectWithTag("gameManager").GetComponent<gameManager>().playerMaxHealth;
+        manager = GameObject.FindGameObjectWithTag("gameManager").GetComponent<gameManager>();
+        maxHealth = manager.playerMaxHealth;
 
         currentHealth = maxHealth;
         isAlive = true;
@@ -76,6 +79,7 @@ public class playerHealth : MonoBehaviour
 
     void Dead() {
     	isAlive = false;
+        manager.GameOver();
     }
 
     public void AddHealth(int amount) {
