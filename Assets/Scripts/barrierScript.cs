@@ -48,7 +48,7 @@ public class barrierScript : MonoBehaviour
     }
 
     void KnockOffPlank() {
-	    if (delay == 0) {
+	    if (delay == 0 && currentPlank >= 0) {
 	    	planks[currentPlank].Play("off");
 
 	    	currentPlank--;

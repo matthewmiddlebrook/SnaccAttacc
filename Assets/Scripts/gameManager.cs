@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class gameManager : MonoBehaviour
@@ -41,6 +42,10 @@ public class gameManager : MonoBehaviour
     private int pointsAddEffectDelay = 0;
     private int pointsSubtractEffectDelay = 0;
 
+    public GameObject pauseMenu;
+    public GameObject gameOverMenu;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,8 +54,11 @@ public class gameManager : MonoBehaviour
         pointsAddEffect = GameObject.FindGameObjectWithTag("pointsAddEffect");
         pointsSubtractEffect = GameObject.FindGameObjectWithTag("pointsSubtractEffect");
 
+
         pointsAddEffect.SetActive(false);
         pointsSubtractEffect.SetActive(false);
+
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
@@ -189,10 +197,30 @@ public class gameManager : MonoBehaviour
 
 
     public void GameOver() {
-
+        gameOverMenu.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
     }
 
     public void Restart() {
+        SceneManager.LoadScene("Game");
+    }
 
+    public void Pause() {
+        pauseMenu.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+    }
+
+    public void Resume() {
+        pauseMenu.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    public void Quit() {
+        SceneManager.LoadScene("Menu");
+    }
+
+    public void ShowLeaderboard() {
+        // show leaderboard UI
+        Social.ShowLeaderboardUI();
     }
 }

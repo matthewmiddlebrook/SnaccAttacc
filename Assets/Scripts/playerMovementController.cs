@@ -32,8 +32,6 @@ public class playerMovementController : MonoBehaviour
         attackScript = GetComponent<playerAttackController>();
         healthScript = GetComponent<playerHealth>();
         inputScript = GameObject.FindGameObjectWithTag("touchInputController").GetComponent<touchInputController>();
-
-        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame

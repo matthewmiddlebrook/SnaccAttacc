@@ -2108,22 +2108,22 @@ PrefabInstance:
     - target: {fileID: 1092208447497650390, guid: ac8e80f338a8e03478c087f7aa2ede3b,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.0830744
+      value: 0.083074406
       objectReference: {fileID: 0}
     - target: {fileID: 1092208447497650390, guid: ac8e80f338a8e03478c087f7aa2ede3b,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.10498279
+      value: -0.1049829
       objectReference: {fileID: 0}
     - target: {fileID: 1092208447497650390, guid: ac8e80f338a8e03478c087f7aa2ede3b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.008801036
+      value: 0.008801005
       objectReference: {fileID: 0}
     - target: {fileID: 1092208447497650390, guid: ac8e80f338a8e03478c087f7aa2ede3b,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9909591
+      value: 0.990959
       objectReference: {fileID: 0}
     - target: {fileID: 1092208447497650390, guid: ac8e80f338a8e03478c087f7aa2ede3b,
         type: 3}
@@ -2397,41 +2397,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac8e80f338a8e03478c087f7aa2ede3b, type: 3}
---- !u!84 &178466872
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  serializedVersion: 3
-  m_Width: 2960
-  m_Height: 1440
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthFormat: 1
-  m_ColorFormat: 8
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &181153297 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8670164031893571210, guid: bd3664a685adc084bbc4d56a9ccddc9b,
@@ -3644,9 +3609,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 870726439}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1748300980}
+        m_MethodName: Resume
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5431,6 +5396,41 @@ Transform:
   m_Father: {fileID: 1789176580}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!84 &530946483
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  serializedVersion: 3
+  m_Width: 1099
+  m_Height: 636
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthFormat: 1
+  m_ColorFormat: 8
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &533559021
 GameObject:
   m_ObjectHideFlags: 0
@@ -10819,8 +10819,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 603594535}
-        m_MethodName: GoToMenu
+      - m_Target: {fileID: 1748300980}
+        m_MethodName: Quit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13781,7 +13781,7 @@ GameObject:
   - component: {fileID: 870726440}
   m_Layer: 5
   m_Name: Pause Menu
-  m_TagString: Untagged
+  m_TagString: pauseMenu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15984,8 +15984,8 @@ MonoBehaviour:
   autoEnableOutlines: 0
   outlineCamera: {fileID: 1576844182}
   outlineShaderMaterial: {fileID: 0}
-  renderTexture: {fileID: 2012454012}
-  extraRenderTexture: {fileID: 178466872}
+  renderTexture: {fileID: 530946483}
+  extraRenderTexture: {fileID: 2010648704}
 --- !u!114 &1067992112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17103,9 +17103,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2104751691}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1748300980}
+        m_MethodName: Restart
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -17420,9 +17420,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 870726439}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1748300980}
+        m_MethodName: Pause
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -19882,7 +19882,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1518693557}
-  m_LocalRotation: {x: 0.052519195, y: -0.7749479, z: 0.06496574, w: 0.6264798}
+  m_LocalRotation: {x: 0.05251923, y: -0.77494794, z: 0.064965725, w: 0.62647974}
   m_LocalPosition: {x: -6.4900002, y: -2.48, z: 28.27}
   m_LocalScale: {x: 1.0000007, y: 1, z: 1.0000008}
   m_Children:
@@ -20309,8 +20309,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1576844180}
-  m_LocalRotation: {x: -0, y: 0.00000002235174, z: 0.0000000018626449, w: 1}
-  m_LocalPosition: {x: -0.0000000999115, y: -0.00000007762848, z: -0.0000004597447}
+  m_LocalRotation: {x: -0.0000000074505797, y: 0.00000002235174, z: -9.3132246e-10,
+    w: 1}
+  m_LocalPosition: {x: -0.000000099911496, y: -0.00000007762851, z: -0.00000045974468}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1067992107}
@@ -20349,7 +20350,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 0
   m_RenderingPath: 1
-  m_TargetTexture: {fileID: 2012454012}
+  m_TargetTexture: {fileID: 530946483}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
@@ -22093,6 +22094,8 @@ MonoBehaviour:
   snackCost: 200
   snackAmount: 10
   playerMaxHealth: 100
+  pauseMenu: {fileID: 870726439}
+  gameOverMenu: {fileID: 2104751691}
 --- !u!4 &1748300981
 Transform:
   m_ObjectHideFlags: 0
@@ -25783,7 +25786,6 @@ GameObject:
   - component: {fileID: 2004721496}
   - component: {fileID: 2004721495}
   - component: {fileID: 2004721493}
-  - component: {fileID: 2004721494}
   m_Layer: 0
   m_Name: Button - Quit
   m_TagString: Untagged
@@ -25823,18 +25825,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &2004721494
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2004721491}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a61ba5dd953aaef4db8da41d457d5cd1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2004721495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25878,8 +25868,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2004721494}
-        m_MethodName: GoToMenu
+      - m_Target: {fileID: 1748300980}
+        m_MethodName: Quit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -25925,7 +25915,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2004721491}
   m_CullTransparentMesh: 0
---- !u!84 &2012454012
+--- !u!84 &2010648704
 RenderTexture:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -25938,8 +25928,8 @@ RenderTexture:
   m_ForcedFallbackFormat: 4
   m_DownscaleFallback: 0
   serializedVersion: 3
-  m_Width: 2960
-  m_Height: 1440
+  m_Width: 1099
+  m_Height: 636
   m_AntiAliasing: 1
   m_MipCount: -1
   m_DepthFormat: 1
@@ -26645,7 +26635,7 @@ GameObject:
   - component: {fileID: 2104751692}
   m_Layer: 5
   m_Name: End Game Menu
-  m_TagString: Untagged
+  m_TagString: endGameMenu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
