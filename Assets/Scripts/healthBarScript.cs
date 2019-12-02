@@ -15,6 +15,6 @@ public class healthBarScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		transform.localScale = new Vector3((healthScript.currentHealth / healthScript.maxHealth) * 3, 0.2f, 1);
+		    transform.localScale = new Vector3((healthScript.currentHealth / healthScript.maxHealth) * 1, 1, 1);
     }
 }

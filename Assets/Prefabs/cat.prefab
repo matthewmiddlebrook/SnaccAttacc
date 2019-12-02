@@ -192,7 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32dcd428160ca4953801ab234ab526d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stopDistance: 2
+  stopDistance: 1
   target: {fileID: 0}
   spawn: {fileID: 0}
 --- !u!114 &8855985310194276862
