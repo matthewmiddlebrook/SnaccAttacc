@@ -54,8 +54,8 @@ public class playerInteractionController : MonoBehaviour
         		managerScript.points >= managerScript.snackCost &&
         		GetComponent<playerHealth>().currentHealth < GetComponent<playerHealth>().maxHealth) {
         		managerScript.PurchaseSnack();
-        	} else
-			if (type == "door" && activeObject.GetComponent<DoorInteraction>().isInteractable) {
+        	}
+			else if (type == "door" && activeObject.GetComponent<DoorInteraction>().isInteractable) {
         		activeObject.GetComponent<DoorInteraction>().Interact();
         	}
 

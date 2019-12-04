@@ -26,11 +26,11 @@ public class playerAnimationController : MonoBehaviour
     void Update()
     {
         float currentSpeed = cc.velocity.magnitude;
-        if (attackScript && attackScript.isAttacking && !attackPlaying && healthScript.isAlive) {
+        if (attackScript.isAttacking && !attackPlaying && healthScript.isAlive) {
         	anim.Play("throw");
         	attackPlaying = true;
         }
-        if (attackScript && !attackScript.isAttacking) {
+        if (!attackScript.isAttacking) {
         	attackPlaying = false;
         }
         if (currentSpeed > moveThreshold) {
