@@ -15,7 +15,32 @@ ModelImporter:
   - first:
       74: 7245587569413745938
     second: throw
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: backpack
+    second: {fileID: 2100000, guid: 98dc12660d00f594b9df69453203d048, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: hair
+    second: {fileID: 2100000, guid: b29769e01725d5047a50578cfc9ee5c7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: hat
+    second: {fileID: 2100000, guid: 3b5627afe11461d4a826f53ebd1972a7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: hatBill
+    second: {fileID: 2100000, guid: f84b7ba6d8d6d304e871d8dfed4983c8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: skin
+    second: {fileID: 2100000, guid: f715316426dee42498a9570909b4c53f, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
