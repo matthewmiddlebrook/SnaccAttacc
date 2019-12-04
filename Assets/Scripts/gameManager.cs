@@ -6,29 +6,41 @@ using UnityEngine.UI;
 
 public class gameManager : MonoBehaviour
 {
-    public GameObject catPrefab;
-    public int maxCatsOnMap;
-    public int baseCatCount;
-    public int baseCatHealth;
-    public int catCountMultiplier;
-    public int catHealthMultiplier;
+    [Header("Game")]
     public int round = 1;
     public int transitionDuration;
-    [HideInInspector] public float catMaxHealth;
     public int spawnDelayDuration;
-    public int playerFullBalloonStartCount;
-    public int playerEmptyBalloonStartCount;
     public int effectDelayDuration;
     public int pointsOnHit;
     public int pointsOnDeath;
     public int pointsOnRebuild;
     public int points = 0;
+    public GameObject pauseMenu;
+    public GameObject gameOverMenu;
+
+    [Header("Cats")]
+    public GameObject catPrefab;
     public List<GameObject> catSpawns;
+    public int maxCatsOnMap;
+    public int baseCatCount;
+    public int baseCatHealth;
+    public int catCountMultiplier;
+    public int catHealthMultiplier;
+    [HideInInspector] public float catMaxHealth;
+
+    [Header("Balloons")]
     public int balloonPackCost;
     public int pickUpBalloonAmount;
+    
+    [Header("Snacks")]
+    public List<GameObject> snacks;
     public int snackCost;
     public int snackAmount;
+
+    [Header("Player")]
     public float playerMaxHealth;
+    public int playerFullBalloonStartCount;
+    public int playerEmptyBalloonStartCount;
 
     private bool transitioning = false;
     private int remainingTransitionTime;
@@ -41,9 +53,6 @@ public class gameManager : MonoBehaviour
     private GameObject pointsSubtractEffect;
     private int pointsAddEffectDelay = 0;
     private int pointsSubtractEffectDelay = 0;
-
-    public GameObject pauseMenu;
-    public GameObject gameOverMenu;
 
 
     // Start is called before the first frame update
