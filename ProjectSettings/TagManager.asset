@@ -41,6 +41,7 @@ TagManager:
   - balloonStation
   - pauseMenu
   - endGameMenu
+  - infoTextObject
   layers:
   - Default
   - TransparentFX

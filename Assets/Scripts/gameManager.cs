@@ -17,6 +17,7 @@ public class gameManager : MonoBehaviour
     public int points = 0;
     public GameObject pauseMenu;
     public GameObject gameOverMenu;
+    public Text scoreText;
 
     [Header("Cats")]
     public GameObject catPrefab;
@@ -53,6 +54,7 @@ public class gameManager : MonoBehaviour
     private GameObject pointsSubtractEffect;
     private int pointsAddEffectDelay = 0;
     private int pointsSubtractEffectDelay = 0;
+    private GameObject infoTextObject;
 
 
     // Start is called before the first frame update
@@ -62,7 +64,7 @@ public class gameManager : MonoBehaviour
         pointsText = GameObject.FindGameObjectWithTag("pointsText").GetComponent<UnityEngine.UI.Text>();
         pointsAddEffect = GameObject.FindGameObjectWithTag("pointsAddEffect");
         pointsSubtractEffect = GameObject.FindGameObjectWithTag("pointsSubtractEffect");
-
+        infoTextObject = GameObject.FindGameObjectWithTag("infoTextObject");
 
         pointsAddEffect.SetActive(false);
         pointsSubtractEffect.SetActive(false);
@@ -134,6 +136,12 @@ public class gameManager : MonoBehaviour
 
         remainingTransitionTime = transitionDuration;
 
+        if (round != 0) {
+            infoTextObject.transform.GetChild(1).GetComponent<UnityEngine.UI.Text>().text = 
+                "ROUND " + round + " OVER";
+            infoTextObject.GetComponent<Animator>().Play("infoTextFade");
+        }
+
         round++;
         roundCatCount = baseCatCount + (round * catCountMultiplier);
         catMaxHealth = baseCatHealth + (round * catHealthMultiplier);
@@ -146,6 +154,10 @@ public class gameManager : MonoBehaviour
     void BeginRound() {
         transitioning = false;
 
+        infoTextObject.transform.GetChild(1).GetComponent<UnityEngine.UI.Text>().text = 
+            "ROUND " + round + " STARTING";
+        infoTextObject.GetComponent<Animator>().Play("infoTextFade");
+        
         roundNumber.text = round.ToString();
         roundNumber.GetComponent<Animator>().Play("fadeIn");
     }
@@ -206,7 +218,9 @@ public class gameManager : MonoBehaviour
 
 
     public void GameOver() {
+        scoreText.text = "ROUNDS SURVIVED: " + round;
         gameOverMenu.SetActive(true);
+        
         Cursor.lockState = CursorLockMode.None;
     }
 
