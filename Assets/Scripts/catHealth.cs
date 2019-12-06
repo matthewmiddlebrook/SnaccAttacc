@@ -8,6 +8,7 @@ public class catHealth : MonoBehaviour
     public float maxHealth;
     public float playerDamage;
 	public float currentHealth;
+	public float runAwayTime;
 	public int odds;
 	public GameObject emptyBalloonPickupObject;
 
@@ -35,7 +36,7 @@ public class catHealth : MonoBehaviour
 	    	if (currentHealth <= 0) {
 	    		managerScript.AddPoints(managerScript.pointsOnDeath);
 
-	    		Destroy(gameObject, 2);
+	    		Destroy(gameObject, runAwayTime);
 
 	    		if (Random.Range(0,100) > odds &&
 	    			GetComponent<catNavigation>().target == GameObject.FindGameObjectWithTag("player")) {

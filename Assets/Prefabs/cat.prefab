@@ -109,7 +109,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.4
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0.05, z: 0.05}
 --- !u!54 &8855985310194276852
 Rigidbody:
@@ -193,6 +193,7 @@ MonoBehaviour:
   maxHealth: 10
   playerDamage: 5
   currentHealth: 0
+  runAwayTime: 4
   odds: 80
   emptyBalloonPickupObject: {fileID: 4418405464256811, guid: e6fdab222124141fab5a661ef55bedd1,
     type: 3}

@@ -12,6 +12,7 @@ public class playerAnimationController : MonoBehaviour
     private bool attackPlaying;
     private playerAttackController attackScript;
     private playerHealth healthScript;
+    private bool isRunning = false;
 
     // Start is called before the first frame update
     void Start()
@@ -32,12 +33,23 @@ public class playerAnimationController : MonoBehaviour
         }
         if (!attackScript.isAttacking) {
         	attackPlaying = false;
+            if (isRunning)
+                anim.Play("run");
+            else
+                anim.Play("idle");
         }
         if (currentSpeed > moveThreshold) {
-        	anim.Play("run");
+            if (!isRunning) {
+                anim.Play("run");
+                print("Running");
+                isRunning = true;
+            }
         }
         else if (currentSpeed <= moveThreshold) {
-        	anim.Play("idle");
+            if (isRunning) {
+                anim.Play("idle");
+                isRunning = false;
+            }
         }
     }
 }
