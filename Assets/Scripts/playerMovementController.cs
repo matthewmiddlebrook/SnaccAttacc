@@ -40,7 +40,7 @@ public class playerMovementController : MonoBehaviour
         rotationX += Input.GetAxis("Mouse X") * lookSpeed;
 
         if (healthScript.isAlive) {
-            if (Application.isEditor) {
+            if (!Application.isMobilePlatform) {
                 transform.localEulerAngles = new Vector3(0, rotationX, 0);
             } else {
                 transform.localEulerAngles = new Vector3(0, inputScript.GetRotationY(), 0);
@@ -60,7 +60,7 @@ public class playerMovementController : MonoBehaviour
     	float horizontalMovement = Mathf.Clamp(inputScript.GetHorizontalMovement(), -speedLimit, speedLimit);
         float verticalMovement = Mathf.Clamp(inputScript.GetVerticalMovement(), -speedLimit, speedLimit);
 
-        if (Application.isEditor) {
+        if (!Application.isMobilePlatform) {
             horizontalMovement = Input.GetAxis("Horizontal") * 50;
             verticalMovement = Input.GetAxis("Vertical") * 50;
         }

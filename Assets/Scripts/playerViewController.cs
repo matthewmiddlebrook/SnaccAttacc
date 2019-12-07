@@ -32,14 +32,14 @@ public class playerViewController : MonoBehaviour
 
 
         if (healthScript && healthScript.isAlive) {
-            if (Application.isEditor) {
+            if (!Application.isMobilePlatform) {
                 transform.localEulerAngles = new Vector3(rotationY, rotationX, 0);
             } else {
                 transform.localEulerAngles = new Vector3(inputScript.GetRotationX(), inputScript.GetRotationY(), 0);
             }
         }
 
-        transform.position = player.transform.position - offset;
+        // transform.position = player.transform.position - offset;
     }
 
     void FixedUpdate() {

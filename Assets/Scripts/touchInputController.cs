@@ -48,7 +48,7 @@ public class touchInputController : MonoBehaviour
 
     void Update()
     {
-        if (Application.isEditor) {
+        if (!Application.isMobilePlatform) {
             if (Input.GetButtonDown("Jump")) {
                 RegisterRightHold();
             }
