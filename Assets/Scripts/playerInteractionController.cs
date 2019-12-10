@@ -154,6 +154,10 @@ public class playerInteractionController : MonoBehaviour
     	if (other.gameObject.CompareTag("healthStation")) {
     		type = "healthStation";
     		activeObject = other.gameObject;
+			Outline[] outlines = other.gameObject.GetComponentsInChildren<Outline>();
+			foreach (Outline o in outlines) {
+				o.enabled = true;
+			}
     	}
 		if (other.gameObject.CompareTag("door")) {
     		type = "door";
