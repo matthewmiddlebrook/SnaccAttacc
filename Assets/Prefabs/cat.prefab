@@ -16,6 +16,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 5aff17192011a4c4e9614bcf536c439e, type: 2}
   - {fileID: 2100000, guid: a52b526732fa84d47b89a4d840e5e022, type: 2}
   - {fileID: 2100000, guid: 3092da1212980b8419294715b2deab86, type: 2}
+  - {fileID: 2100000, guid: 0ba25a9ceb599274bb80ccbbc1f6e838, type: 2}
 --- !u!1 &8855985309524013960
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,6 +285,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 5aff17192011a4c4e9614bcf536c439e, type: 2}
+    - target: {fileID: -1504981713932161579, guid: 813e645a59bb8a3499379d0bf242f6ed,
+        type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 813e645a59bb8a3499379d0bf242f6ed, type: 3}
 --- !u!1 &8276357973088156771 stripped
