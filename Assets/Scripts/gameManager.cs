@@ -9,7 +9,7 @@ public class gameManager : MonoBehaviour
     [Header("Game")]
     public int round = 1;
     public int transitionDuration;
-    public int spawnDelayDuration;
+    public int startTransitionDuration;
     public int effectDelayDuration;
     public int pointsOnHit;
     public int pointsOnDeath;
@@ -24,9 +24,14 @@ public class gameManager : MonoBehaviour
     public List<GameObject> catSpawns;
     public int maxCatsOnMap;
     public int baseCatCount;
+    public int spawnDelayDuration;
     public int baseCatHealth;
+    public int kittenCountMultiplier;
+    public int kittenHealthMultiplier;
     public int catCountMultiplier;
     public int catHealthMultiplier;
+    public int wildcatCountMultiplier;
+    public int wildcatHealthMultiplier;
     [HideInInspector] public float catMaxHealth;
 
     [Header("Balloons")]
@@ -140,6 +145,8 @@ public class gameManager : MonoBehaviour
             infoTextObject.transform.GetChild(1).GetComponent<UnityEngine.UI.Text>().text = 
                 "ROUND " + round + " OVER";
             infoTextObject.GetComponent<Animator>().Play("infoTextFade");
+        } else {
+            remainingTransitionTime = startTransitionDuration;
         }
 
         round++;

@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: Wildcat Software
-  productName: Snack Attack
+  productName: Snacc Attacc
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -766,7 +766,7 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   cloudProjectId: 135d2478-1cd8-4e9f-9134-edb613a7dba2
   framebufferDepthMemorylessMode: 0
-  projectName: 'Wildcat: Snack Attack'
+  projectName: 'Wildcat: Snacc Attacc'
   organizationId: matthew-middlebrook
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0

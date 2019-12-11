@@ -35,7 +35,9 @@ public class catHealth : MonoBehaviour
 
 	    	if (currentHealth <= 0) {
 	    		managerScript.AddPoints(managerScript.pointsOnDeath);
-
+				Renderer r = gameObject.GetComponentInChildren<Renderer>();
+        		r.material.SetFloat("_Metallic", .5f);
+				r.material.SetFloat("_Glossiness", .75f);
 	    		Destroy(gameObject, runAwayTime);
 
 	    		if (Random.Range(0,100) > odds &&
