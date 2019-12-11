@@ -53,7 +53,8 @@ public class playerInteractionController : MonoBehaviour
         	else if (type == "healthStation" &&
         		managerScript.points >= managerScript.snackCost &&
         		GetComponent<playerHealth>().currentHealth < GetComponent<playerHealth>().maxHealth) {
-        		managerScript.PurchaseSnack();
+        		activeObject.GetComponent<vendingScript>().Dispense();
+				managerScript.PurchaseSnack();
         	}
 			else if (type == "door" && activeObject.GetComponent<DoorInteraction>().isInteractable) {
         		activeObject.GetComponent<DoorInteraction>().Interact();
@@ -201,6 +202,10 @@ public class playerInteractionController : MonoBehaviour
     	if (other.gameObject.CompareTag("healthStation")) {
     		type = null;
     		activeObject = null;
+			Outline[] outlines = other.gameObject.GetComponentsInChildren<Outline>();
+			foreach (Outline o in outlines) {
+				o.enabled = false;
+			}
     	}
 		if (other.gameObject.CompareTag("door")) {
     		type = null;

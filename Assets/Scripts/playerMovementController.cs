@@ -23,6 +23,8 @@ public class playerMovementController : MonoBehaviour
     private playerAttackController attackScript;
     private playerHealth healthScript;
     private touchInputController inputScript;
+
+    private gameManager managerScript;
     
 
     // Start is called before the first frame update
@@ -32,43 +34,41 @@ public class playerMovementController : MonoBehaviour
         attackScript = GetComponent<playerAttackController>();
         healthScript = GetComponent<playerHealth>();
         inputScript = GameObject.FindGameObjectWithTag("touchInputController").GetComponent<touchInputController>();
+
+        managerScript = GameObject.FindGameObjectWithTag("gameManager").GetComponent<gameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        rotationX += Input.GetAxis("Mouse X") * lookSpeed;
-
-        if (healthScript.isAlive) {
-            if (!Application.isMobilePlatform) {
-                transform.localEulerAngles = new Vector3(0, rotationX, 0);
-            } else {
-                transform.localEulerAngles = new Vector3(0, inputScript.GetRotationY(), 0);
+        if (!managerScript.isPaused) {
+            rotationX += Input.GetAxis("Mouse X") * lookSpeed;
+            if (healthScript.isAlive) {
+                if (!Application.isMobilePlatform) {
+                    transform.localEulerAngles = new Vector3(0, rotationX, 0);
+                } else {
+                    transform.localEulerAngles = new Vector3(0, inputScript.GetRotationY(), 0);
+                }
             }
-        }
 
-        // if (Physics.Raycast(transform.position, -transform.up, out hit, 100.0f)) {
-        //     yDis = Vector3.Distance(new Vector3(0, transform.position.y, 0), new Vector3(0, hit.point.y,0));
-        //     if (yDis > onGroundThreshold) {
-        //         Vector3 tmp = new Vector3(0, yDis - 1, 0);
-        //         transform.position -= tmp;
-        //     }
-        // }
+        }
     }
 
     void FixedUpdate() {
-    	float horizontalMovement = Mathf.Clamp(inputScript.GetHorizontalMovement(), -speedLimit, speedLimit);
-        float verticalMovement = Mathf.Clamp(inputScript.GetVerticalMovement(), -speedLimit, speedLimit);
+        if (!managerScript.isPaused) {
+            float horizontalMovement = Mathf.Clamp(inputScript.GetHorizontalMovement(), -speedLimit, speedLimit);
+            float verticalMovement = Mathf.Clamp(inputScript.GetVerticalMovement(), -speedLimit, speedLimit);
 
-        if (!Application.isMobilePlatform) {
-            horizontalMovement = Input.GetAxis("Horizontal") * 50;
-            verticalMovement = Input.GetAxis("Vertical") * 50;
+            if (!Application.isMobilePlatform) {
+                horizontalMovement = Input.GetAxis("Horizontal") * 50;
+                verticalMovement = Input.GetAxis("Vertical") * 50;
+            }
+
+            forwardVector = transform.forward * movementSpeed * verticalMovement;
+            horizontalVector = transform.right * movementSpeed * horizontalMovement;
+
+            Move();
         }
-
-		forwardVector = transform.forward * movementSpeed * verticalMovement;
-        horizontalVector = transform.right * movementSpeed * horizontalMovement;
-
-        Move();
     }
 
     void Move() {

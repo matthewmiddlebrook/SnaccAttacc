@@ -5,7 +5,7 @@ using UnityEngine;
 public class vendingScript : MonoBehaviour
 {
     private gameManager managerScript;
-    private GameObject snackSpawnPoint;
+    public GameObject snackSpawnPoint;
 
     // Start is called before the first frame update
     void Start()
@@ -13,17 +13,12 @@ public class vendingScript : MonoBehaviour
         managerScript = GameObject.FindGameObjectWithTag("gameManager").GetComponent<gameManager>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void Dispense()
     {
+        print(snackSpawnPoint.transform.position);
         Instantiate(
             managerScript.snacks[Random.Range(0, managerScript.snacks.Count)], 
             snackSpawnPoint.transform.position, 
-            Quaternion.identity);
+            snackSpawnPoint.transform.rotation);
     }
 }

@@ -15,7 +15,7 @@ public class bobAndTurn : MonoBehaviour
     Vector3 tempPos = new Vector3 ();
  
     // Use this for initialization
-    void Start () {
+    void OnEnable() {
         // Store the starting position & rotation of the object
         posOffset = transform.position;
     }

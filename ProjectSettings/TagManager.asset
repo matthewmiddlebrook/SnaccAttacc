@@ -42,6 +42,7 @@ TagManager:
   - pauseMenu
   - endGameMenu
   - infoTextObject
+  - healthPickup
   layers:
   - Default
   - TransparentFX

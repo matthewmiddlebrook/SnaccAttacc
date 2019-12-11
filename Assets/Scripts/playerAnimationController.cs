@@ -14,6 +14,8 @@ public class playerAnimationController : MonoBehaviour
     private playerHealth healthScript;
     private bool isRunning = false;
 
+    private gameManager managerScript;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,35 +23,42 @@ public class playerAnimationController : MonoBehaviour
         cc = transform.parent.gameObject.GetComponent<CharacterController>();
         attackScript = transform.parent.gameObject.GetComponent<playerAttackController>();
         healthScript = transform.parent.gameObject.GetComponent<playerHealth>();
+
+        managerScript = GameObject.FindGameObjectWithTag("gameManager").GetComponent<gameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        float currentSpeed = cc.velocity.magnitude;
-        if (attackScript.isAttacking && !attackPlaying && healthScript.isAlive) {
-        	anim.Play("throw");
-        	attackPlaying = true;
-        }
-        if (!attackScript.isAttacking) {
-        	attackPlaying = false;
-            if (isRunning)
-                anim.Play("run");
-            else
-                anim.Play("idle");
-        }
-        if (currentSpeed > moveThreshold) {
-            if (!isRunning) {
-                anim.Play("run");
-                print("Running");
-                isRunning = true;
+        if (!managerScript.isPaused) {
+            anim.enabled = true;
+            float currentSpeed = cc.velocity.magnitude;
+            if (attackScript.isAttacking && !attackPlaying && healthScript.isAlive) {
+                anim.Play("throw");
+                attackPlaying = true;
             }
-        }
-        else if (currentSpeed <= moveThreshold) {
-            if (isRunning) {
-                anim.Play("idle");
-                isRunning = false;
+            if (!attackScript.isAttacking) {
+                attackPlaying = false;
+                if (isRunning)
+                    anim.Play("run");
+                else
+                    anim.Play("idle");
             }
+            if (currentSpeed > moveThreshold) {
+                if (!isRunning) {
+                    anim.Play("run");
+                    print("Running");
+                    isRunning = true;
+                }
+            }
+            else if (currentSpeed <= moveThreshold) {
+                if (isRunning) {
+                    anim.Play("idle");
+                    isRunning = false;
+                }
+            }
+        } else {
+             anim.enabled = false;
         }
     }
 }

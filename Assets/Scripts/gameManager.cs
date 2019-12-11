@@ -23,13 +23,17 @@ public class gameManager : MonoBehaviour
     public GameObject catPrefab;
     public List<GameObject> catSpawns;
     public int maxCatsOnMap;
-    public int baseCatCount;
     public int spawnDelayDuration;
+    public int baseCatCount;
     public int baseCatHealth;
+    public int difficulty;
+    public float kittenSpeed;
     public int kittenCountMultiplier;
     public int kittenHealthMultiplier;
+    public float catSpeed;
     public int catCountMultiplier;
     public int catHealthMultiplier;
+    public float wildcatSpeed;
     public int wildcatCountMultiplier;
     public int wildcatHealthMultiplier;
     [HideInInspector] public float catMaxHealth;
@@ -61,10 +65,13 @@ public class gameManager : MonoBehaviour
     private int pointsSubtractEffectDelay = 0;
     private GameObject infoTextObject;
 
+    public bool isPaused = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        difficulty = PlayerPrefs.GetInt("Difficulty");
+
         roundNumber = GameObject.FindGameObjectWithTag("roundNumber").GetComponent<UnityEngine.UI.Text>();
         pointsText = GameObject.FindGameObjectWithTag("pointsText").GetComponent<UnityEngine.UI.Text>();
         pointsAddEffect = GameObject.FindGameObjectWithTag("pointsAddEffect");
@@ -82,42 +89,53 @@ public class gameManager : MonoBehaviour
     {
         bool inPlay = StillInPlay();
 
-        if (!inPlay && !transitioning) {
-            Transition();
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (isPaused) {
+                Resume();
+            } else {
+                Pause();
+            }
         }
 
-        if (transitioning && remainingTransitionTime > 0) {
-            remainingTransitionTime--;
-        }
-        else if (transitioning && remainingTransitionTime == 0) {
-            BeginRound();
-        }
+        if (!isPaused) {
+            if (!inPlay && !transitioning) {
+                Transition();
+            }
 
-        if (!transitioning && 
-            spawnDelay == 0 && 
-            inPlay &&
-            GameObject.FindGameObjectsWithTag("cat").Length < maxCatsOnMap &&
-            spawnedCats < roundCatCount) {
-            SpawnCat();
-        }
-        else if (!transitioning && 
-            spawnDelay > 0 && 
-            inPlay) {
-            spawnDelay--;
-        }
+            if (transitioning && remainingTransitionTime > 0) {
+                remainingTransitionTime--;
+            }
+            else if (transitioning && remainingTransitionTime == 0) {
+                BeginRound();
+            }
 
-        if (pointsAddEffectDelay > 0) {
-            pointsAddEffectDelay--;
-        }
-        if (pointsAddEffectDelay == 0) {
-            pointsAddEffect.SetActive(false);
-        }
+            if (!transitioning && 
+                spawnDelay == 0 && 
+                inPlay &&
+                GameObject.FindGameObjectsWithTag("cat").Length < maxCatsOnMap &&
+                spawnedCats < roundCatCount) {
+                SpawnCat();
+            }
+            else if (!transitioning && 
+                spawnDelay > 0 && 
+                inPlay) {
+                spawnDelay--;
+            }
 
-        if (pointsSubtractEffectDelay > 0) {
-            pointsSubtractEffectDelay--;
-        }
-        if (pointsSubtractEffectDelay == 0) {
-            pointsSubtractEffect.SetActive(false);
+            if (pointsAddEffectDelay > 0) {
+                pointsAddEffectDelay--;
+            }
+            if (pointsAddEffectDelay == 0) {
+                pointsAddEffect.SetActive(false);
+            }
+
+            if (pointsSubtractEffectDelay > 0) {
+                pointsSubtractEffectDelay--;
+            }
+            if (pointsSubtractEffectDelay == 0) {
+                pointsSubtractEffect.SetActive(false);
+            }
         }
 
         pointsText.text = points.ToString();
@@ -150,8 +168,17 @@ public class gameManager : MonoBehaviour
         }
 
         round++;
-        roundCatCount = baseCatCount + (round * catCountMultiplier);
-        catMaxHealth = baseCatHealth + (round * catHealthMultiplier);
+
+        if (difficulty == 0) {
+            roundCatCount = baseCatCount + (round * kittenCountMultiplier);
+            catMaxHealth = baseCatHealth + (round * kittenHealthMultiplier);
+        } else if (difficulty == 1) {
+            roundCatCount = baseCatCount + (round * catCountMultiplier);
+            catMaxHealth = baseCatHealth + (round * catHealthMultiplier);
+        } else {
+            roundCatCount = baseCatCount + (round * wildcatCountMultiplier);
+            catMaxHealth = baseCatHealth + (round * wildcatHealthMultiplier);
+        }
 
         roundNumber.GetComponent<Animator>().Play("fade");
 
@@ -220,7 +247,6 @@ public class gameManager : MonoBehaviour
 
     public void PurchaseSnack() {
         SubtractPoints(snackCost);
-        GameObject.FindGameObjectWithTag("player").GetComponent<playerHealth>().AddHealth(snackAmount);
     }
 
 
@@ -236,11 +262,14 @@ public class gameManager : MonoBehaviour
     }
 
     public void Pause() {
+        isPaused = true;
         pauseMenu.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
     }
 
     public void Resume() {
+        print("Unpaused");
+        isPaused = false;
         pauseMenu.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -251,6 +280,6 @@ public class gameManager : MonoBehaviour
 
     public void ShowLeaderboard() {
         // show leaderboard UI
-        Social.ShowLeaderboardUI();
+        // Social.ShowLeaderboardUI();
     }
 }

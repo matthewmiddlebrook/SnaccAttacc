@@ -13,6 +13,8 @@ public class barrierScript : MonoBehaviour
     private int currentPlank;
     private int delay = 0;
 
+    private gameManager managerScript;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +25,8 @@ public class barrierScript : MonoBehaviour
         }
 
         currentPlank = 4;
+
+        managerScript = GameObject.FindGameObjectWithTag("gameManager").GetComponent<gameManager>();
     }
 
     // Update is called once per frame
@@ -70,8 +74,10 @@ public class barrierScript : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other) {
-    	if (other.gameObject.CompareTag("catAttackCollider")) {
-    		KnockOffPlank();
-    	}
+        if (!managerScript.isPaused) {
+            if (other.gameObject.CompareTag("catAttackCollider")) {
+                KnockOffPlank();
+            }
+        }
     }
 }

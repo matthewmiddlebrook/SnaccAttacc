@@ -175,5 +175,9 @@ public class playerAttackController : MonoBehaviour
     		AddEmptyBalloons(managerScript.pickUpBalloonAmount);
     		Destroy(other.gameObject);
     	}
+        if (other.gameObject.CompareTag("healthPickup")) {
+    		healthScript.AddHealth(managerScript.snackAmount);
+    		Destroy(other.gameObject);
+    	}
     }
 }

@@ -18,6 +18,8 @@ public class catNavigation : MonoBehaviour
     private GameObject barrier;
     private catHealth healthScript;
 
+    private gameManager managerScript;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,31 +36,45 @@ public class catNavigation : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("player");
         target = barrier;
 
+        managerScript = GameObject.FindGameObjectWithTag("gameManager").GetComponent<gameManager>();
         nav = GetComponent<NavMeshAgent>();
+        if (managerScript.difficulty == 0) {
+            nav.speed = managerScript.kittenSpeed;
+        } else if (managerScript.difficulty == 1) {
+            nav.speed = managerScript.catSpeed;
+        } else {
+            nav.speed = managerScript.wildcatSpeed;
+        }
+
         healthScript = GetComponent<catHealth>();
         StartCoroutine("TargetingLoop");
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        distance = Vector3.Distance(transform.position, target.transform.position);
+        if (!managerScript.isPaused) {
+            distance = Vector3.Distance(transform.position, target.transform.position);
 
-        if (distance <= stopDistance) {
-        	nav.isStopped = true;
-        }
-        else {
-        	nav.isStopped = false;
-        }
+            if (distance <= stopDistance) {
+                nav.isStopped = true;
+            }
+            else {
+                nav.isStopped = false;
+            }
 
-        if (healthScript.currentHealth <= 0) {
-        	target = spawn;
-        }
-        else if (barrier.GetComponent<barrierScript>().noPlanks) {
-        	target = player;
-        }
-        else {
-        	target = barrier;
+            if (healthScript.currentHealth <= 0) {
+                target = spawn;
+            }
+            else if (barrier.GetComponent<barrierScript>().noPlanks) {
+                target = player;
+            }
+            else {
+                target = barrier;
+            }
+        } else {
+            nav.isStopped = true;
         }
     }
 

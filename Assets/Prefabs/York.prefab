@@ -1,6 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &7483834843054125637
+--- !u!65 &7095433772733504168
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1511521956105677635}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.025, y: 0.035, z: 0.025}
+  m_Center: {x: 0, y: 0, z: 0.001}
+--- !u!114 &6593208818749220659
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -15,6 +28,57 @@ MonoBehaviour:
   degreesPerSecond: 90
   amplitude: 0.5
   frequency: 1
+--- !u!1 &6170414636386982846
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7821466728753141372}
+  - component: {fileID: 3755145483175282123}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7821466728753141372
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6170414636386982846}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2495373443478264144}
+  m_Father: {fileID: 7483834844842808525}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &3755145483175282123
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6170414636386982846}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4c223625e46b44f43a04d8fb0b30a80d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7483834844842808563
 GameObject:
   m_ObjectHideFlags: 0
@@ -25,8 +89,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7483834844842808525}
   - component: {fileID: 7483834844842808524}
-  - component: {fileID: 9102275294706056990}
-  - component: {fileID: 5972223132297613486}
   m_Layer: 0
   m_Name: York
   m_TagString: Untagged
@@ -45,7 +107,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1.0000002, y: 1, z: 1.0000002}
   m_Children:
-  - {fileID: 2495373443478264144}
+  - {fileID: 7821466728753141372}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -62,49 +124,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 10
---- !u!65 &9102275294706056990
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7483834844842808563}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.5, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!95 &5972223132297613486
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7483834844842808563}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4c223625e46b44f43a04d8fb0b30a80d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &7483834843054125642
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 7483834844842808525}
+    m_TransformParent: {fileID: 7821466728753141372}
     m_Modifications:
     - target: {fileID: -927199367670048503, guid: 12f5ad261ca26c343ac090001d9fa877,
         type: 3}
       propertyPath: m_Name
       value: York_Snacc
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 12f5ad261ca26c343ac090001d9fa877,
+        type: 3}
+      propertyPath: m_TagString
+      value: healthPickup
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 12f5ad261ca26c343ac090001d9fa877,
         type: 3}
@@ -129,7 +164,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 12f5ad261ca26c343ac090001d9fa877,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 12f5ad261ca26c343ac090001d9fa877,
         type: 3}
@@ -169,12 +204,12 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 12f5ad261ca26c343ac090001d9fa877,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 35
+      value: 34.999985
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 12f5ad261ca26c343ac090001d9fa877,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 35
+      value: 34.999985
       objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: 12f5ad261ca26c343ac090001d9fa877,
         type: 3}

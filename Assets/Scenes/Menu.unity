@@ -7930,7 +7930,7 @@ GameObject:
   - component: {fileID: 494926517}
   - component: {fileID: 494926518}
   m_Layer: 0
-  m_Name: UISlider (1)
+  m_Name: DifficultySlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8012,9 +8012,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 769453405}
+        m_MethodName: SetDifficultyLevel
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -8022,7 +8022,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 1
+        m_CallState: 2
 --- !u!1 &510428552
 GameObject:
   m_ObjectHideFlags: 0
@@ -12144,7 +12144,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 769453397}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba857d52deeb7ae4799e977c14bd333b, type: 3}
+  m_Script: {fileID: 11500000, guid: 574c4245858135c42b10acee910fadf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   masterMixer: {fileID: 24100000, guid: bc155dfdccec1be4780029a8bd542de5, type: 2}
@@ -12152,6 +12152,7 @@ MonoBehaviour:
   musicParamater: MusicVolume
   UISlider: {fileID: 1702113515}
   UIParamater: UIVolume
+  DifficultySlider: {fileID: 494926518}
 --- !u!1 &791627887
 GameObject:
   m_ObjectHideFlags: 0
@@ -16828,7 +16829,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 1
+        m_CallState: 2
 --- !u!1 &1733218313
 GameObject:
   m_ObjectHideFlags: 0
@@ -19418,7 +19419,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 1
+        m_CallState: 2
 --- !u!1 &1944553971
 GameObject:
   m_ObjectHideFlags: 0

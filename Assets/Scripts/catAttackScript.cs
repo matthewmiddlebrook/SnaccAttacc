@@ -16,6 +16,8 @@ public class catAttackScript : MonoBehaviour
     private catNavigation navScript;
     private BoxCollider attackCollider;
 
+    private gameManager managerScript;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,32 +25,36 @@ public class catAttackScript : MonoBehaviour
         navScript = GetComponent<catNavigation>();
         attackDistance = navScript.stopDistance;
         attackCollider = transform.GetChild(0).GetComponent<BoxCollider>();
+
+        managerScript = GameObject.FindGameObjectWithTag("gameManager").GetComponent<gameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        float distance = Vector3.Distance(transform.position, navScript.target.transform.position);
+        if (!managerScript.isPaused) {
+            float distance = Vector3.Distance(transform.position, navScript.target.transform.position);
 
-        if (distance <= attackDistance && !isAttacking) {
-        	attackCollider.enabled = true;
-        	isAttacking = true;
-        	coolDown = coolDownDuration;
-        	attackTime = attackDuration;
-        }
+            if (distance <= attackDistance && !isAttacking) {
+                attackCollider.enabled = true;
+                isAttacking = true;
+                coolDown = coolDownDuration;
+                attackTime = attackDuration;
+            }
 
-        if (coolDown > 0) {
-        	coolDown--;
-        }
-        if (coolDown == 0) {
-        	isAttacking = false;
-        }
+            if (coolDown > 0) {
+                coolDown--;
+            }
+            if (coolDown == 0) {
+                isAttacking = false;
+            }
 
-        if (attackTime > 0) {
-        	attackTime--;
-        }
-        if (attackTime == 0) {
-        	attackCollider.enabled = false;
+            if (attackTime > 0) {
+                attackTime--;
+            }
+            if (attackTime == 0) {
+                attackCollider.enabled = false;
+            }
         }
     }
 }
