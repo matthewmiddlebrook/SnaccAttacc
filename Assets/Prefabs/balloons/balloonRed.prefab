@@ -14,8 +14,9 @@ GameObject:
   - component: {fileID: 4125022662187361849}
   - component: {fileID: 4442245888850600393}
   - component: {fileID: 3884852670614101321}
+  - component: {fileID: 6804825449432706806}
   m_Layer: 0
-  m_Name: balloon 5
+  m_Name: balloonRed
   m_TagString: balloon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,6 +126,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   balloonAOEObject: {fileID: 7813019422129212589, guid: 5f057bc6aa57f427dabcba372d9aaf72,
     type: 3}
+--- !u!114 &6804825449432706806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3826011757371877500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57ab39be700254a759999e80b68a1314, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 3
 --- !u!1001 &3059357698987032020
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -207,12 +221,12 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.4
       objectReference: {fileID: 0}
-    - target: {fileID: 4607834392650931077, guid: a0c9e468e97dc4582b3eddded378ce63,
+    - target: {fileID: 7631161832731568646, guid: a0c9e468e97dc4582b3eddded378ce63,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 270d20d96169a451ba71f91029678990, type: 2}
-    - target: {fileID: 7631161832731568646, guid: a0c9e468e97dc4582b3eddded378ce63,
+    - target: {fileID: 4607834392650931077, guid: a0c9e468e97dc4582b3eddded378ce63,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

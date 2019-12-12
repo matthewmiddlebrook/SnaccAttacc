@@ -38,7 +38,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7821466728753141372}
   - component: {fileID: 3755145483175282123}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7483834844842808525}
   - component: {fileID: 7483834844842808524}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: York
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,6 +140,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: healthPickup
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 12f5ad261ca26c343ac090001d9fa877,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 12f5ad261ca26c343ac090001d9fa877,
         type: 3}

@@ -72,8 +72,21 @@ public class gameManager : MonoBehaviour
     private int pointsAddEffectDelay = 0;
     private int pointsSubtractEffectDelay = 0;
     private GameObject infoTextObject;
-
     public bool isPaused = false;
+
+
+    [Header("Stats")]
+    public int roundsSurvived;
+    public float surviveTime;
+    public int catsSpawned;
+    public int catsDefeated;
+    public int beanBucksEarned;
+    public int beanBucksSpent;
+    public int waterBalloonsCollected;
+    public int waterBalloonsThrown;
+    public int waterBalloonsBought;
+    public int snacksBought;
+
 
     // Start is called before the first frame update
     void Start()
@@ -107,6 +120,10 @@ public class gameManager : MonoBehaviour
         }
 
         if (!isPaused) {
+            if (inPlay && !transitioning) {
+                surviveTime += Time.deltaTime;
+            }
+
             if (!inPlay && !transitioning) {
                 Transition();
             }
@@ -160,6 +177,7 @@ public class gameManager : MonoBehaviour
         newCat.GetComponent<catNavigation>().spawn = catSpawns[tmp];
 
         spawnedCats++;
+        catsSpawned++;
     }
 
     void Transition() {
@@ -171,6 +189,7 @@ public class gameManager : MonoBehaviour
             infoTextObject.transform.GetChild(1).GetComponent<UnityEngine.UI.Text>().text = 
                 "ROUND " + round + " OVER";
             infoTextObject.GetComponent<Animator>().Play("infoTextFade");
+            roundsSurvived++;
         } else {
             remainingTransitionTime = startTransitionDuration;
         }
@@ -273,6 +292,10 @@ public class gameManager : MonoBehaviour
         isPaused = true;
         pauseMenu.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
+        foreach (GameObject b in GameObject.FindGameObjectsWithTag("balloon")) {
+            waterBalloonScript balloon = b.GetComponent<waterBalloonScript>();
+            balloon.Paused();
+        }
     }
 
     public void Resume() {
@@ -280,6 +303,10 @@ public class gameManager : MonoBehaviour
         isPaused = false;
         pauseMenu.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
+        foreach (GameObject b in GameObject.FindGameObjectsWithTag("balloon")) {
+            waterBalloonScript balloon = b.GetComponent<waterBalloonScript>();
+            balloon.Unpaused();
+        }
     }
 
     public void Quit() {

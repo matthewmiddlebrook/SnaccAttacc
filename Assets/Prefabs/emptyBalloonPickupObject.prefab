@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4418405464256812}
   - component: {fileID: 5637713904261294773}
   - component: {fileID: 5178737168498542394}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: emptyBalloonPickupObject
   m_TagString: emptyBalloonPickup
   m_Icon: {fileID: 0}
@@ -81,11 +81,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4418405464256812}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 218790ccbb4cb403c9a2673acfa5db88,
-        type: 3}
-      propertyPath: m_Name
-      value: balloonBox
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 218790ccbb4cb403c9a2673acfa5db88,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -155,6 +150,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 218790ccbb4cb403c9a2673acfa5db88,
+        type: 3}
+      propertyPath: m_Name
+      value: balloonBox
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 218790ccbb4cb403c9a2673acfa5db88,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: 218790ccbb4cb403c9a2673acfa5db88,
         type: 3}

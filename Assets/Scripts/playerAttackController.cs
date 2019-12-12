@@ -8,7 +8,6 @@ public class playerAttackController : MonoBehaviour
     [Header("Settings")]
     public GameObject[] balloonObjects;
     public float throwingSpeed;
-    public float destroyDelay;
     public int coolDownDuration;
     public int effectDelayDuration;
 
@@ -116,8 +115,9 @@ public class playerAttackController : MonoBehaviour
     		Quaternion.identity
     	);
 
+        managerScript.waterBalloonsThrown++;
+
     	tmp.GetComponent<Rigidbody>().AddForce(balloonSpawn.transform.forward * throwingSpeed);
-    	Destroy(tmp, destroyDelay);
 
     	fullBalloonCount--;
 

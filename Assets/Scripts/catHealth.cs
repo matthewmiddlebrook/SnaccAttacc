@@ -39,7 +39,7 @@ public class catHealth : MonoBehaviour
         		r.material.SetFloat("_Metallic", .5f);
 				r.material.SetFloat("_Glossiness", .75f);
 	    		Destroy(gameObject, runAwayTime);
-
+				managerScript.catsDefeated++;
 	    		if (Random.Range(0,100) > odds &&
 	    			GetComponent<catNavigation>().target == GameObject.FindGameObjectWithTag("player")) {
 	    			Instantiate(emptyBalloonPickupObject,

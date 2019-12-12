@@ -14,8 +14,9 @@ GameObject:
   - component: {fileID: 3158641470930150770}
   - component: {fileID: 3408308984609235586}
   - component: {fileID: 2811228052655742466}
+  - component: {fileID: 3217613727906226651}
   m_Layer: 0
-  m_Name: balloon 2
+  m_Name: balloonOrange
   m_TagString: balloon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,6 +126,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   balloonAOEObject: {fileID: 7813019422129212589, guid: 5f057bc6aa57f427dabcba372d9aaf72,
     type: 3}
+--- !u!114 &3217613727906226651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2878363675039148855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57ab39be700254a759999e80b68a1314, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 3
 --- !u!1001 &4080186980963237535
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -207,12 +221,12 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.4
       objectReference: {fileID: 0}
-    - target: {fileID: 4607834392650931077, guid: a0c9e468e97dc4582b3eddded378ce63,
+    - target: {fileID: 7631161832731568646, guid: a0c9e468e97dc4582b3eddded378ce63,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 05eab6e38051047479f3cd2f8ea2e99a, type: 2}
-    - target: {fileID: 7631161832731568646, guid: a0c9e468e97dc4582b3eddded378ce63,
+    - target: {fileID: 4607834392650931077, guid: a0c9e468e97dc4582b3eddded378ce63,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
