@@ -19,6 +19,14 @@ public class gameManager : MonoBehaviour
     public GameObject gameOverMenu;
     public Text scoreText;
 
+    [Header("Audio")]
+    public AudioClip backgroundMusic;
+    public AudioClip[] catMeowsSounds;
+    public AudioClip catAttackSound;
+    public AudioClip catHitSound;
+    public AudioClip balloonThrowSound;
+    public AudioClip balloonHitSound;
+
     [Header("Cats")]
     public GameObject catPrefab;
     public List<GameObject> catSpawns;
