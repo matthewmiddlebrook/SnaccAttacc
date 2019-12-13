@@ -10,7 +10,7 @@ public class catAttackScript : MonoBehaviour
 
     private float coolDown;
     private float attackTime;
-    private bool isAttacking = false;
+    public bool isAttacking = false;
     private GameObject player;
     private float attackDistance;
     private catNavigation navScript;
