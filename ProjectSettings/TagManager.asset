@@ -45,6 +45,7 @@ TagManager:
   - healthPickup
   - catAudio
   - sfxAudioSource
+  - roundTitle
   layers:
   - Default
   - TransparentFX

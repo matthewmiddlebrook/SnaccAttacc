@@ -37,7 +37,7 @@ public class gameManager : MonoBehaviour
     public GameObject catPrefab;
     public List<GameObject> catSpawns;
     public int maxCatsOnMap;
-    public int spawnDelayDuration;
+    public float spawnDelayDuration;
     public int baseCatCount;
     public int baseCatHealth;
     public int difficulty;
@@ -67,16 +67,17 @@ public class gameManager : MonoBehaviour
     public int playerEmptyBalloonStartCount;
 
     private bool transitioning = false;
-    private int remainingTransitionTime;
+    private float remainingTransitionTime;
     private int roundCatCount = 0;
     private int spawnedCats = 0;
-    private int spawnDelay = 0;
+    private float spawnDelay = 0;
+    private Text roundTitle;
     private Text roundNumber;
     private Text pointsText;
     private GameObject pointsAddEffect;
     private GameObject pointsSubtractEffect;
-    private int pointsAddEffectDelay = 0;
-    private int pointsSubtractEffectDelay = 0;
+    private float pointsAddEffectDelay = 0;
+    private float pointsSubtractEffectDelay = 0;
     private GameObject infoTextObject;
     public bool isPaused = false;
     public bool gameOver = false;
@@ -102,6 +103,7 @@ public class gameManager : MonoBehaviour
     {
         difficulty = PlayerPrefs.GetInt("Difficulty");
 
+        roundTitle = GameObject.FindGameObjectWithTag("roundTitle").GetComponent<UnityEngine.UI.Text>();
         roundNumber = GameObject.FindGameObjectWithTag("roundNumber").GetComponent<UnityEngine.UI.Text>();
         pointsText = GameObject.FindGameObjectWithTag("pointsText").GetComponent<UnityEngine.UI.Text>();
         pointsAddEffect = GameObject.FindGameObjectWithTag("pointsAddEffect");
@@ -140,14 +142,17 @@ public class gameManager : MonoBehaviour
             }
 
             if (transitioning && remainingTransitionTime > 0) {
-                remainingTransitionTime--;
+                roundTitle.text = "NEXT ROUND IN";
+                roundTitle.fontSize = 26;
+                roundNumber.text = ((int)remainingTransitionTime).ToString();
+                remainingTransitionTime-=Time.deltaTime;
             }
-            else if (transitioning && remainingTransitionTime == 0) {
+            else if (transitioning && remainingTransitionTime <= 0) {
                 BeginRound();
             }
 
             if (!transitioning && 
-                spawnDelay == 0 && 
+                spawnDelay <= 0 && 
                 inPlay &&
                 GameObject.FindGameObjectsWithTag("cat").Length < maxCatsOnMap &&
                 spawnedCats < roundCatCount) {
@@ -156,20 +161,20 @@ public class gameManager : MonoBehaviour
             else if (!transitioning && 
                 spawnDelay > 0 && 
                 inPlay) {
-                spawnDelay--;
+                spawnDelay-=Time.deltaTime;
             }
 
             if (pointsAddEffectDelay > 0) {
-                pointsAddEffectDelay--;
+                pointsAddEffectDelay-=Time.deltaTime;
             }
-            if (pointsAddEffectDelay == 0) {
+            if (pointsAddEffectDelay <= 0) {
                 pointsAddEffect.SetActive(false);
             }
 
             if (pointsSubtractEffectDelay > 0) {
-                pointsSubtractEffectDelay--;
+                pointsSubtractEffectDelay-=Time.deltaTime;
             }
-            if (pointsSubtractEffectDelay == 0) {
+            if (pointsSubtractEffectDelay <= 0) {
                 pointsSubtractEffect.SetActive(false);
             }
         }
@@ -218,7 +223,7 @@ public class gameManager : MonoBehaviour
             catMaxHealth = baseCatHealth + (round * wildcatHealthMultiplier);
         }
 
-        roundNumber.GetComponent<Animator>().Play("fade");
+        // roundNumber.GetComponent<Animator>().Play("fade");
 
         spawnedCats = 0;
     }
@@ -233,8 +238,10 @@ public class gameManager : MonoBehaviour
             "ROUND " + round + " STARTING";
         infoTextObject.GetComponent<Animator>().Play("infoTextFade");
         
+        roundTitle.text = "ROUND";
+        roundTitle.fontSize = 38;
         roundNumber.text = round.ToString();
-        roundNumber.GetComponent<Animator>().Play("fadeIn");
+        // roundNumber.GetComponent<Animator>().Play("fadeIn");
     }
 
     bool StillInPlay() {

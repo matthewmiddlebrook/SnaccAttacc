@@ -50,16 +50,16 @@ public class catAttackScript : MonoBehaviour
             }
 
             if (coolDown > 0) {
-                coolDown--;
+                coolDown-=Time.deltaTime;
             }
-            if (coolDown == 0) {
+            if (coolDown <= 0) {
                 isAttacking = false;
             }
 
             if (attackTime > 0) {
-                attackTime--;
+                attackTime-=Time.deltaTime;
             }
-            if (attackTime == 0) {
+            if (attackTime <= 0) {
                 attackCollider.enabled = false;
             }
         }

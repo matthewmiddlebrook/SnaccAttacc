@@ -17,8 +17,8 @@ public class playerHealth : MonoBehaviour
     public bool isAlive;
     
     private GameObject damageText;
-    private int damageDelay;
-    private int healDelay;
+    private float damageDelay;
+    private float healDelay;
     private GameObject healText;
 
     private gameManager manager;
@@ -42,16 +42,16 @@ public class playerHealth : MonoBehaviour
     void Update()
     {
         if (damageDelay > 0) {
-        	damageDelay--;
+        	damageDelay-=Time.deltaTime;
         }
-        if (damageDelay == 0) {
+        if (damageDelay <= 0) {
         	damageText.SetActive(false);
         }
 
         if (healDelay > 0) {
-        	healDelay--;
+        	healDelay-=Time.deltaTime;
         }
-        if (healDelay == 0) {
+        if (healDelay <= 0) {
         	healText.SetActive(false);
         }
 

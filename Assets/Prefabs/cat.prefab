@@ -190,8 +190,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 703568957c8904c049fda91df34878da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coolDownDuration: 50
-  attackDuration: 3
+  coolDownDuration: 0.75
+  attackDuration: 0.2
   isAttacking: 0
 --- !u!114 &8855985310194276855
 MonoBehaviour:

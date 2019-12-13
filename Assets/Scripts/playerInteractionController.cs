@@ -12,7 +12,7 @@ public class playerInteractionController : MonoBehaviour
     [Header("Runtime Variables")]
     public GameObject activeObject;
 
-    private int delay;
+    private float delay;
     private bool readyForInput;
     private string type;
     private GameObject interactTextObject;
@@ -65,9 +65,9 @@ public class playerInteractionController : MonoBehaviour
         }
 
         if (delay > 0) {
-        	delay--;
+        	delay-=Time.deltaTime;
         }
-        if (delay == 0) {
+        if (delay <= 0) {
         	readyForInput = true;
         }
 

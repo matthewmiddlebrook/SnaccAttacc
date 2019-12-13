@@ -8,8 +8,8 @@ public class playerAttackController : MonoBehaviour
     [Header("Settings")]
     public GameObject[] balloonObjects;
     public float throwingSpeed;
-    public int coolDownDuration;
-    public int effectDelayDuration;
+    public float coolDownDuration;
+    public float effectDelayDuration;
 
     [Header("Runtime Variables")]
     public int emptyBalloonCount;
@@ -17,7 +17,7 @@ public class playerAttackController : MonoBehaviour
 
     private GameObject viewObject;
     private GameObject balloonSpawn;
-    private int coolDown;
+    private float coolDown;
     private playerHealth healthScript;
     private int fullBalloonCount;
     private Text fullText;
@@ -28,10 +28,10 @@ public class playerAttackController : MonoBehaviour
     private GameObject fullSubtractEffect;
     private GameObject emptyAddEffect;
     private GameObject emptySubtractEffect;
-    private int fullAddEffectDelay = 0;
-    private int fullSubtractEffectDelay = 0;
-    private int emptyAddEffectDelay = 0;
-    private int emptySubtractEffectDelay = 0;
+    private float fullAddEffectDelay = 0;
+    private float fullSubtractEffectDelay = 0;
+    private float emptyAddEffectDelay = 0;
+    private float emptySubtractEffectDelay = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -65,37 +65,37 @@ public class playerAttackController : MonoBehaviour
     void Update()
     {
         if (coolDown > 0) {
-        	coolDown--;
+        	coolDown-=Time.deltaTime;
         }
-        if (coolDown == 0) {
+        if (coolDown <= 0) {
         	isAttacking = false;
         }
 
         if (fullAddEffectDelay > 0) {
-        	fullAddEffectDelay--;
+        	fullAddEffectDelay-=Time.deltaTime;
         }
-        if (fullAddEffectDelay == 0) {
+        if (fullAddEffectDelay <= 0) {
         	fullAddEffect.SetActive(false);
         }
 
         if (fullSubtractEffectDelay > 0) {
         	fullSubtractEffectDelay--;
         }
-        if (fullSubtractEffectDelay == 0) {
+        if (fullSubtractEffectDelay <= 0) {
         	fullSubtractEffect.SetActive(false);
         }
 
         if (emptyAddEffectDelay > 0) {
-        	emptyAddEffectDelay--;
+        	emptyAddEffectDelay-=Time.deltaTime;
         }
-        if (emptyAddEffectDelay == 0) {
+        if (emptyAddEffectDelay <= 0) {
         	emptyAddEffect.SetActive(false);
         }
 
         if (emptySubtractEffectDelay > 0) {
-        	emptySubtractEffectDelay--;
+        	emptySubtractEffectDelay-=Time.deltaTime;
         }
-        if (emptySubtractEffectDelay == 0) {
+        if (emptySubtractEffectDelay <= 0) {
         	emptySubtractEffect.SetActive(false);
         }
 

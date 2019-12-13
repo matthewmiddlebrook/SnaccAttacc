@@ -7,11 +7,11 @@ public class barrierScript : MonoBehaviour
     [Header("Runtime Variables")]
     public bool noPlanks = false;
     public bool isInteractable = false;
-    public int destructionDelayDuration;
+    public float destructionDelayDuration;
 
     private Animator[] planks;
     private int currentPlank;
-    private int delay = 0;
+    private float delay = 0;
 
     private gameManager managerScript;
     private AudioSource audioSource;
@@ -41,7 +41,7 @@ public class barrierScript : MonoBehaviour
         	noPlanks = false;
         }
 
-        if (currentPlank < 4 && delay == 0) {
+        if (currentPlank < 4 && delay <= 0) {
         	isInteractable = true;
         }
         else {
@@ -49,12 +49,12 @@ public class barrierScript : MonoBehaviour
         }
 
         if (delay > 0) {
-        	delay--;
+        	delay-=Time.deltaTime;
         }
     }
 
     void KnockOffPlank() {
-	    if (delay == 0 && currentPlank >= 0) {
+	    if (delay <= 0 && currentPlank >= 0) {
 	    	planks[currentPlank].Play("off");
 
 	    	currentPlank--;

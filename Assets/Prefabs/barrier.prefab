@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: 0
+  color: 3
   eraseRenderer: 0
 --- !u!114 &9015997484384749620
 MonoBehaviour:
@@ -26,7 +26,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: 0
+  color: 3
   eraseRenderer: 0
 --- !u!114 &8232938004265689040
 MonoBehaviour:
@@ -40,7 +40,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: 0
+  color: 3
   eraseRenderer: 0
 --- !u!1 &3939805055824102596
 GameObject:
@@ -186,7 +186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   noPlanks: 0
   isInteractable: 0
-  destructionDelayDuration: 100
+  destructionDelayDuration: 1
 --- !u!82 &4427108928771018302
 AudioSource:
   m_ObjectHideFlags: 0
@@ -556,7 +556,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: 0
+  color: 3
   eraseRenderer: 0
 --- !u!114 &717660081531258299
 MonoBehaviour:
@@ -570,7 +570,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: 0
+  color: 3
   eraseRenderer: 0
 --- !u!1001 &83708670419818212
 PrefabInstance:
