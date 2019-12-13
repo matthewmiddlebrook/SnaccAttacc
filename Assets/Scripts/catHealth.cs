@@ -13,11 +13,13 @@ public class catHealth : MonoBehaviour
 	public GameObject emptyBalloonPickupObject;
 
 	private gameManager managerScript;
+	private AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
     {
         managerScript = GameObject.FindGameObjectWithTag("gameManager").GetComponent<gameManager>();
+        audioSource = GameObject.FindGameObjectWithTag("catAudio").GetComponent<AudioSource>();
 
         maxHealth = managerScript.catMaxHealth;
         currentHealth = maxHealth;
@@ -35,11 +37,17 @@ public class catHealth : MonoBehaviour
 
 	    	if (currentHealth <= 0) {
 	    		managerScript.AddPoints(managerScript.pointsOnDeath);
+				managerScript.catsDefeated++;
+
+				if (!audioSource.isPlaying) {
+					audioSource.clip = managerScript.catHitSounds[Random.Range(0,managerScript.catHitSounds.Length)];
+                	audioSource.Play();
+				}
+
 				Renderer r = gameObject.GetComponentInChildren<Renderer>();
         		r.material.SetFloat("_Metallic", .5f);
 				r.material.SetFloat("_Glossiness", .75f);
 	    		Destroy(gameObject, runAwayTime);
-				managerScript.catsDefeated++;
 	    		if (Random.Range(0,100) > odds &&
 	    			GetComponent<catNavigation>().target == GameObject.FindGameObjectWithTag("player")) {
 	    			Instantiate(emptyBalloonPickupObject,

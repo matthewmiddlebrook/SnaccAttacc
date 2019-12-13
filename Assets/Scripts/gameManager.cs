@@ -21,11 +21,17 @@ public class gameManager : MonoBehaviour
 
     [Header("Audio")]
     public AudioClip backgroundMusic;
-    public AudioClip[] catMeowsSounds;
-    public AudioClip catAttackSound;
-    public AudioClip catHitSound;
-    public AudioClip balloonThrowSound;
-    public AudioClip balloonHitSound;
+    public AudioClip roundSound;
+    public AudioClip playerDefeatedSound;
+    public AudioClip[] catMeowSounds;
+    public AudioClip[] catHitSounds;
+    public AudioClip doorOpenSound;
+    public AudioClip snackPickupSound;
+    public AudioClip balloonPickupSound;
+    public AudioClip[] woodPlankSounds;
+    public AudioClip[] balloonThrowSounds;
+
+    private AudioSource sfxAudioSource;
 
     [Header("Cats")]
     public GameObject catPrefab;
@@ -73,7 +79,7 @@ public class gameManager : MonoBehaviour
     private int pointsSubtractEffectDelay = 0;
     private GameObject infoTextObject;
     public bool isPaused = false;
-
+    public bool gameOver = false;
 
     [Header("Stats")]
     public int roundsSurvived;
@@ -86,6 +92,9 @@ public class gameManager : MonoBehaviour
     public int waterBalloonsThrown;
     public int waterBalloonsBought;
     public int snacksBought;
+    public int planksKnockedOff;
+    public int planksPutUp;
+    public Text[] endGameScoreTexts;
 
 
     // Start is called before the first frame update
@@ -98,6 +107,8 @@ public class gameManager : MonoBehaviour
         pointsAddEffect = GameObject.FindGameObjectWithTag("pointsAddEffect");
         pointsSubtractEffect = GameObject.FindGameObjectWithTag("pointsSubtractEffect");
         infoTextObject = GameObject.FindGameObjectWithTag("infoTextObject");
+
+        sfxAudioSource = GameObject.FindGameObjectWithTag("sfxAudioSource").GetComponent<AudioSource>();
 
         pointsAddEffect.SetActive(false);
         pointsSubtractEffect.SetActive(false);
@@ -119,7 +130,7 @@ public class gameManager : MonoBehaviour
             }
         }
 
-        if (!isPaused) {
+        if (!isPaused && !gameOver) {
             if (inPlay && !transitioning) {
                 surviveTime += Time.deltaTime;
             }
@@ -215,6 +226,9 @@ public class gameManager : MonoBehaviour
     void BeginRound() {
         transitioning = false;
 
+        sfxAudioSource.clip = roundSound;
+        sfxAudioSource.Play();
+
         infoTextObject.transform.GetChild(1).GetComponent<UnityEngine.UI.Text>().text = 
             "ROUND " + round + " STARTING";
         infoTextObject.GetComponent<Animator>().Play("infoTextFade");
@@ -235,6 +249,7 @@ public class gameManager : MonoBehaviour
 
     public void AddPoints(int amount) {
         points += amount;
+        beanBucksEarned += amount;
 
         if (pointsAddEffectDelay > 0) {
             pointsAddEffect.SetActive(false);
@@ -248,6 +263,7 @@ public class gameManager : MonoBehaviour
 
     public void SubtractPoints(int amount) {
         points -= amount;
+        beanBucksSpent += amount;
 
         if (pointsSubtractEffectDelay > 0) {
             pointsSubtractEffect.SetActive(false);
@@ -270,15 +286,42 @@ public class gameManager : MonoBehaviour
     public void PurchaseBalloons() {
         SubtractPoints(balloonPackCost);
         GameObject.FindGameObjectWithTag("player").GetComponent<playerAttackController>().AddEmptyBalloons(pickUpBalloonAmount);
+        waterBalloonsBought += pickUpBalloonAmount;
     }
 
     public void PurchaseSnack() {
         SubtractPoints(snackCost);
+        snacksBought += snackAmount;
     }
 
 
     public void GameOver() {
+        gameOver = true;
+
+        sfxAudioSource.clip = playerDefeatedSound;
+        sfxAudioSource.Play();
+
         scoreText.text = "ROUNDS SURVIVED: " + round;
+
+        endGameScoreTexts[0].text = 
+            "ROUNDS:\t\t" + roundsSurvived.ToString() + 
+            "\nTIME:\t\t\t" + (int)surviveTime;
+        endGameScoreTexts[1].text = 
+            "SPAWNED:\t" + catsSpawned.ToString() + 
+            "\nDEFEATED:\t" + catsDefeated.ToString();
+        endGameScoreTexts[2].text = 
+            "EARNED:\t" + beanBucksEarned.ToString() + 
+            "\nSPENT:\t\t" + beanBucksSpent.ToString();
+        endGameScoreTexts[3].text = 
+            "FALLEN:\t" + planksKnockedOff.ToString() + 
+            "\nREBUILT:\t" + planksPutUp.ToString();
+        endGameScoreTexts[4].text = 
+            "COLLECTED:\t\t" + waterBalloonsCollected.ToString() + 
+            "\nTHROWN:\t\t\t" + waterBalloonsThrown.ToString() + 
+            "\nPURCHASED:\t" + waterBalloonsBought.ToString();
+        endGameScoreTexts[5].text = 
+            "PURCHASED:\t" + snacksBought.ToString();
+
         gameOverMenu.SetActive(true);
         
         Cursor.lockState = CursorLockMode.None;

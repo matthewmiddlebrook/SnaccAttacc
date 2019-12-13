@@ -43,6 +43,8 @@ TagManager:
   - endGameMenu
   - infoTextObject
   - healthPickup
+  - catAudio
+  - sfxAudioSource
   layers:
   - Default
   - TransparentFX

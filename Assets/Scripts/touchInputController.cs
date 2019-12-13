@@ -33,6 +33,7 @@ public class touchInputController : MonoBehaviour
     private int leftHoldDelay;
 
     private GameObject player;
+    private gameManager managerScript;
 
     void Start() {
     	leftJoystick = GameObject.FindGameObjectWithTag("leftJoystick");
@@ -44,125 +45,128 @@ public class touchInputController : MonoBehaviour
         rightJoystickLastPos = rightJoystickOrigin;
         
         player = GameObject.FindGameObjectWithTag("player");
+        managerScript = GameObject.FindGameObjectWithTag("gameManager").GetComponent<gameManager>();
     }
 
     void Update()
     {
-        if (!Application.isMobilePlatform) {
-            if (Input.GetButtonDown("Jump")) {
-                RegisterRightHold();
-            }
-            if (Input.GetButtonUp("Jump")) {
-                ReleaseRightHold();
-            }
-            if (Input.GetMouseButtonDown(0)) {
-                RegisterRightTap();
-            }
-        } else {
-            if (Input.touchCount == 1) {
-                Touch touch = Input.GetTouch(0);
+        if (!managerScript.isPaused) {
+            if (!Application.isMobilePlatform) {
+                if (Input.GetButtonDown("Jump")) {
+                    RegisterRightHold();
+                }
+                if (Input.GetButtonUp("Jump")) {
+                    ReleaseRightHold();
+                }
+                if (Input.GetMouseButtonDown(0)) {
+                    RegisterRightTap();
+                }
+            } else {
+                if (Input.touchCount == 1) {
+                    Touch touch = Input.GetTouch(0);
 
-                if (touch.position.x < Screen.width/2) {
-                    rightJoystick.transform.position = new Vector3 (rightJoystickOrigin.x, rightJoystickOrigin.y, rightJoystick.transform.position.z);
+                    if (touch.position.x < Screen.width/2) {
+                        rightJoystick.transform.position = new Vector3 (rightJoystickOrigin.x, rightJoystickOrigin.y, rightJoystick.transform.position.z);
 
-                    MoveLeftStick(touch);
+                        MoveLeftStick(touch);
+                    }
+                    else {
+                        leftJoystick.transform.position = new Vector3 (leftJoystickOrigin.x, leftJoystickOrigin.y, leftJoystick.transform.position.z);
+
+                        MoveRightStick(touch);
+                    }
+                }
+
+                if (Input.touchCount == 2) {
+                    Touch touch = Input.GetTouch(0);
+
+                    if (touch.position.x < Screen.width/2) {
+                        MoveLeftStick(touch);
+                    }
+                    else {
+                        MoveRightStick(touch);
+                    }
+
+                    Touch touchTwo = Input.GetTouch(1);
+
+                    if (touchTwo.position.x > Screen.width/2) {
+                        MoveRightStick(touchTwo);
+                    }
+                    else {
+                        MoveLeftStick(touchTwo);
+                    }
+                }
+
+                if (!controlsInverted) {
+                    if (deltaOneX < -deadZone) {
+                        horizontalMovement = deltaOneX;
+                    }
+                    else if (deltaOneX > deadZone) {
+                        horizontalMovement = deltaOneX;
+                    }
+                    else {
+                        horizontalMovement = 0;
+                    }
+
+                    if (deltaOneY < -deadZone) {
+                        verticalMovement = deltaOneY;
+                    }
+                    else if (deltaOneY > deadZone) {
+                        verticalMovement = deltaOneY;
+                    }
+                    else {
+                        verticalMovement = 0;
+                    }
+
+                    rotationY -= -deltaTwoX * (xSensitivity / 10);
+                    rotationX -= deltaTwoY * (ySensitivity / 10);
+
+                    RefreshRightStick();
                 }
                 else {
-                    leftJoystick.transform.position = new Vector3 (leftJoystickOrigin.x, leftJoystickOrigin.y, leftJoystick.transform.position.z);
+                    if (deltaTwoX < -deadZone) {
+                        horizontalMovement = deltaTwoX;
+                    }
+                    else if (deltaTwoX > deadZone) {
+                        horizontalMovement = deltaTwoX;
+                    }
+                    else {
+                        horizontalMovement = 0;
+                    }
 
-                    MoveRightStick(touch);
+                    if (deltaTwoY < -deadZone) {
+                        verticalMovement = deltaTwoY;
+                    }
+                    else if (deltaTwoY > deadZone) {
+                        verticalMovement = deltaTwoY;
+                    }
+                    else {
+                        verticalMovement = 0;
+                    }
+
+                    rotationY -= -deltaOneX * (xSensitivity / 10);
+                    rotationX -= deltaOneY * (ySensitivity / 10);
+
+                    RefreshLeftStick();
                 }
+
+                if (rightHoldDelay > 0) {
+                    rightHoldDelay--;
+                }
+                if (rightHoldDelay == 0) {
+                    RegisterRightHold();
+                }
+
+                if (leftHoldDelay > 0) {
+                    leftHoldDelay--;
+                }
+                if (leftHoldDelay == 0) {
+                    RegisterLeftHold();
+                }
+
+                rightJoystickLastPos = new Vector2(rightJoystick.transform.position.x, rightJoystick.transform.position.y);
+                leftJoystickLastPos = new Vector2(leftJoystick.transform.position.x, leftJoystick.transform.position.y);
             }
-
-            if (Input.touchCount == 2) {
-                Touch touch = Input.GetTouch(0);
-
-                if (touch.position.x < Screen.width/2) {
-                    MoveLeftStick(touch);
-                }
-                else {
-                    MoveRightStick(touch);
-                }
-
-                Touch touchTwo = Input.GetTouch(1);
-
-                if (touchTwo.position.x > Screen.width/2) {
-                    MoveRightStick(touchTwo);
-                }
-                else {
-                    MoveLeftStick(touchTwo);
-                }
-            }
-
-            if (!controlsInverted) {
-                if (deltaOneX < -deadZone) {
-                    horizontalMovement = deltaOneX;
-                }
-                else if (deltaOneX > deadZone) {
-                    horizontalMovement = deltaOneX;
-                }
-                else {
-                    horizontalMovement = 0;
-                }
-
-                if (deltaOneY < -deadZone) {
-                    verticalMovement = deltaOneY;
-                }
-                else if (deltaOneY > deadZone) {
-                    verticalMovement = deltaOneY;
-                }
-                else {
-                    verticalMovement = 0;
-                }
-
-                rotationY -= -deltaTwoX * (xSensitivity / 10);
-                rotationX -= deltaTwoY * (ySensitivity / 10);
-
-                RefreshRightStick();
-            }
-            else {
-                if (deltaTwoX < -deadZone) {
-                    horizontalMovement = deltaTwoX;
-                }
-                else if (deltaTwoX > deadZone) {
-                    horizontalMovement = deltaTwoX;
-                }
-                else {
-                    horizontalMovement = 0;
-                }
-
-                if (deltaTwoY < -deadZone) {
-                    verticalMovement = deltaTwoY;
-                }
-                else if (deltaTwoY > deadZone) {
-                    verticalMovement = deltaTwoY;
-                }
-                else {
-                    verticalMovement = 0;
-                }
-
-                rotationY -= -deltaOneX * (xSensitivity / 10);
-                rotationX -= deltaOneY * (ySensitivity / 10);
-
-                RefreshLeftStick();
-            }
-
-            if (rightHoldDelay > 0) {
-                rightHoldDelay--;
-            }
-            if (rightHoldDelay == 0) {
-                RegisterRightHold();
-            }
-
-            if (leftHoldDelay > 0) {
-                leftHoldDelay--;
-            }
-            if (leftHoldDelay == 0) {
-                RegisterLeftHold();
-            }
-
-            rightJoystickLastPos = new Vector2(rightJoystick.transform.position.x, rightJoystick.transform.position.y);
-            leftJoystickLastPos = new Vector2(leftJoystick.transform.position.x, leftJoystick.transform.position.y);
         }
     }
 

@@ -23,6 +23,7 @@ public class playerAttackController : MonoBehaviour
     private Text fullText;
     private Text emptyText;
     private gameManager managerScript;
+    private AudioSource sfxAudioSource;
     private GameObject fullAddEffect;
     private GameObject fullSubtractEffect;
     private GameObject emptyAddEffect;
@@ -40,6 +41,7 @@ public class playerAttackController : MonoBehaviour
         viewObject = GameObject.FindGameObjectWithTag("cameraObject");
         healthScript = GetComponent<playerHealth>();
         managerScript = GameObject.FindGameObjectWithTag("gameManager").GetComponent<gameManager>();
+        sfxAudioSource = GameObject.FindGameObjectWithTag("sfxAudioSource").GetComponent<AudioSource>();
 
         fullText = GameObject.FindGameObjectWithTag("fullText").GetComponent<UnityEngine.UI.Text>();
         emptyText = GameObject.FindGameObjectWithTag("emptyText").GetComponent<UnityEngine.UI.Text>();
@@ -172,10 +174,15 @@ public class playerAttackController : MonoBehaviour
 
     void OnTriggerEnter(Collider other) {
     	if (other.gameObject.CompareTag("emptyBalloonPickup")) {
+            sfxAudioSource.clip = managerScript.balloonPickupSound;
+            sfxAudioSource.Play();
+            managerScript.waterBalloonsCollected += managerScript.pickUpBalloonAmount;
     		AddEmptyBalloons(managerScript.pickUpBalloonAmount);
     		Destroy(other.gameObject);
     	}
         if (other.gameObject.CompareTag("healthPickup")) {
+            sfxAudioSource.clip = managerScript.snackPickupSound;
+            sfxAudioSource.Play();
     		healthScript.AddHealth(managerScript.snackAmount);
     		Destroy(other.gameObject);
     	}

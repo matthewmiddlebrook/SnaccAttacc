@@ -14,6 +14,7 @@ public class barrierScript : MonoBehaviour
     private int delay = 0;
 
     private gameManager managerScript;
+    private AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,7 @@ public class barrierScript : MonoBehaviour
         currentPlank = 4;
 
         managerScript = GameObject.FindGameObjectWithTag("gameManager").GetComponent<gameManager>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -56,15 +58,23 @@ public class barrierScript : MonoBehaviour
 	    	planks[currentPlank].Play("off");
 
 	    	currentPlank--;
+            managerScript.planksKnockedOff++;
 
 	    	delay = destructionDelayDuration;
+
+            audioSource.clip = managerScript.woodPlankSounds[Random.Range(0,managerScript.woodPlankSounds.Length)];
+            audioSource.Play();
 	    }
     }
 
     void AddPlank() {
     	currentPlank++;
+        managerScript.planksPutUp++;
 
     	planks[currentPlank].Play("on");
+
+        audioSource.clip = managerScript.woodPlankSounds[Random.Range(0,managerScript.woodPlankSounds.Length)];
+        audioSource.Play();
 
     	GameObject.FindGameObjectWithTag("gameManager").GetComponent<gameManager>().AddPoints(GameObject.FindGameObjectWithTag("gameManager").GetComponent<gameManager>().pointsOnRebuild);
     }
