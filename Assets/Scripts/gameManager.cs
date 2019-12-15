@@ -31,6 +31,7 @@ public class gameManager : MonoBehaviour
     public AudioClip[] woodPlankSounds;
     public AudioClip[] balloonThrowSounds;
 
+    private AudioSource musicAudioSource;
     private AudioSource sfxAudioSource;
 
     [Header("Cats")]
@@ -110,6 +111,7 @@ public class gameManager : MonoBehaviour
         pointsSubtractEffect = GameObject.FindGameObjectWithTag("pointsSubtractEffect");
         infoTextObject = GameObject.FindGameObjectWithTag("infoTextObject");
 
+        musicAudioSource = GameObject.FindGameObjectWithTag("musicAudioSource").GetComponent<AudioSource>();
         sfxAudioSource = GameObject.FindGameObjectWithTag("sfxAudioSource").GetComponent<AudioSource>();
 
         pointsAddEffect.SetActive(false);
@@ -342,6 +344,7 @@ public class gameManager : MonoBehaviour
         isPaused = true;
         pauseMenu.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
+        musicAudioSource.Pause();
         foreach (GameObject b in GameObject.FindGameObjectsWithTag("balloon")) {
             waterBalloonScript balloon = b.GetComponent<waterBalloonScript>();
             balloon.Paused();
@@ -353,6 +356,7 @@ public class gameManager : MonoBehaviour
         isPaused = false;
         pauseMenu.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
+        musicAudioSource.Play();
         foreach (GameObject b in GameObject.FindGameObjectsWithTag("balloon")) {
             waterBalloonScript balloon = b.GetComponent<waterBalloonScript>();
             balloon.Unpaused();

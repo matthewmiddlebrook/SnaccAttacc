@@ -46,6 +46,7 @@ TagManager:
   - catAudio
   - sfxAudioSource
   - roundTitle
+  - musicAudioSource
   layers:
   - Default
   - TransparentFX

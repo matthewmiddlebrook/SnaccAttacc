@@ -7,25 +7,16 @@ public class playerMovementController : MonoBehaviour
     public float movementSpeed;
     public float speedLimit;
     public float lookSpeed;
-    public float minY;
-    public float maxY;
-    public float onGroundThreshold;
 
-    private Vector3 moveDirection;
     private CharacterController cc;
     private float rotationX;
-    private float yDis;
-	private RaycastHit hit;
-    private Vector3 moveVector;
     private Vector3 forwardVector;
     private Vector3 horizontalVector;
-    private Vector3 verticalVector;
     private playerAttackController attackScript;
     private playerHealth healthScript;
     private touchInputController inputScript;
-
     private gameManager managerScript;
-    
+
 
     // Start is called before the first frame update
     void Start()
@@ -50,34 +41,30 @@ public class playerMovementController : MonoBehaviour
                     transform.localEulerAngles = new Vector3(0, inputScript.GetRotationY(), 0);
                 }
             }
+            if (cc.isGrounded) {
+                // float horizontalMovement = Mathf.Clamp(inputScript.GetHorizontalMovement(), -speedLimit, speedLimit);
+                // float verticalMovement = Mathf.Clamp(inputScript.GetVerticalMovement(), -speedLimit, speedLimit);
 
-        }
-    }
+                // if (!Application.isMobilePlatform) {
+                //     horizontalMovement = Input.GetAxis("Horizontal") * 50;
+                //     verticalMovement = Input.GetAxis("Vertical") * 50;
+                // }
 
-    void FixedUpdate() {
-        if (!managerScript.isPaused) {
-            float horizontalMovement = Mathf.Clamp(inputScript.GetHorizontalMovement(), -speedLimit, speedLimit);
-            float verticalMovement = Mathf.Clamp(inputScript.GetVerticalMovement(), -speedLimit, speedLimit);
+                // forwardVector = transform.forward * movementSpeed * verticalMovement;
+                // horizontalVector = transform.right * movementSpeed * horizontalMovement;
 
-            if (!Application.isMobilePlatform) {
-                horizontalMovement = Input.GetAxis("Horizontal") * 50;
-                verticalMovement = Input.GetAxis("Vertical") * 50;
+                // if (!attackScript.isAttacking && healthScript.isAlive) {
+                //     cc.SimpleMove(forwardVector + horizontalVector);
+                // }
+
+                // Move forward / backward
+                Vector3 forwardVector = transform.TransformDirection(Vector3.forward) * movementSpeed * Input.GetAxis("Vertical") * 50;
+                Vector3 horizontalVector = transform.TransformDirection(Vector3.right) * movementSpeed * Input.GetAxis("Horizontal") * 50;
+                cc.SimpleMove(forwardVector + horizontalVector);
             }
-
-            forwardVector = transform.forward * movementSpeed * verticalMovement;
-            horizontalVector = transform.right * movementSpeed * horizontalMovement;
-
-            Move();
-        }
-    }
-
-    void Move() {
-        if (!attackScript.isAttacking && healthScript.isAlive) {
-            // rb.velocity = forwardVector + horizontalVector;
-            cc.SimpleMove(forwardVector+horizontalVector);
-        }
-        else {
-            // rb.velocity = new Vector3(0, 0, 0);
+            else {
+                cc.SimpleMove(Vector3.forward * 0);
+            }
         }
     }
 }
