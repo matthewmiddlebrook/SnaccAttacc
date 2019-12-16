@@ -1,17 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 
 public class playerMovementController : MonoBehaviour
 {
+    public Camera cam;
     public float movementSpeed;
     public float speedLimit;
     public float lookSpeed;
 
     private CharacterController cc;
-    private float rotationX;
     private Vector3 forwardVector;
     private Vector3 horizontalVector;
+    private float verticalMovement;
+    private float horizontalMovement;
     private Vector3 moveDirection = Vector3.zero;
     private playerAttackController attackScript;
     private playerHealth healthScript;
@@ -22,49 +25,72 @@ public class playerMovementController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        cam = Camera.main;
         cc = GetComponent<CharacterController>();
         attackScript = GetComponent<playerAttackController>();
         healthScript = GetComponent<playerHealth>();
         inputScript = GameObject.FindGameObjectWithTag("touchInputController").GetComponent<touchInputController>();
 
         managerScript = GameObject.FindGameObjectWithTag("gameManager").GetComponent<gameManager>();
+
+        CinemachineCore.GetInputAxis = AxisOverride;
+    }
+    
+    public float AxisOverride(string axisName)
+    {
+        if (!managerScript.isPaused) {
+            if (Application.isMobilePlatform || managerScript.mobileTesting) {
+                if (axisName == "Mouse X") {
+                    return inputScript.GetRotationY();
+                } else if (axisName == "Mouse Y") {
+                    return inputScript.GetRotationX();
+                }
+                
+            } else {
+                if (axisName == "Mouse X") {
+                    return Input.GetAxis("Mouse X");
+                } else if (axisName == "Mouse Y") {
+                    return Input.GetAxis("Mouse Y");
+                }
+            }
+        }
+        return 0;
     }
 
     // Update is called once per frame
     void Update()
     {
         if (!managerScript.isPaused) {
-            if (attackScript.isAttacking) {
-                moveDirection = Vector3.zero;
-            }
-            if (healthScript.isAlive) {
-                if (Application.isMobilePlatform) {
-                    transform.localEulerAngles = new Vector3(0, inputScript.GetRotationY(), 0);
-                } else {
-                    rotationX += Input.GetAxis("Mouse X") * lookSpeed;
-                    transform.localEulerAngles = new Vector3(0, rotationX, 0);
-                }
-            }
+            // If you want to pause the player when attacking
+            // if (attackScript.isAttacking) {
+            //     moveDirection = Vector3.zero;
+            // }
             if (cc.isGrounded && !attackScript.isAttacking && healthScript.isAlive)
             {
-                // We are grounded, so recalculate
-                // move direction directly from axes
-                float horizontalMovement;
-                float verticalMovement;
-                // Use touch controls on mobile
-                if (Application.isMobilePlatform) {
-                    horizontalMovement = Mathf.Clamp(inputScript.GetHorizontalMovement(), -speedLimit, speedLimit);
+                var camera = Camera.main;
+                var forward = cam.transform.forward;
+                var right = cam.transform.right;
+
+                forward.y = 0f;
+                right.y = 0f;
+
+                forward.Normalize();
+                right.Normalize();
+
+                if (Application.isMobilePlatform || managerScript.mobileTesting) {
                     verticalMovement = Mathf.Clamp(inputScript.GetVerticalMovement(), -speedLimit, speedLimit);
+                    horizontalMovement = Mathf.Clamp(inputScript.GetHorizontalMovement(), -speedLimit, speedLimit);
                 } else {
-                    horizontalMovement = Input.GetAxis("Horizontal") * speedLimit;
                     verticalMovement = Input.GetAxis("Vertical") * speedLimit;
+                    horizontalMovement = Input.GetAxis("Horizontal") * speedLimit;
                 }
 
-                forwardVector = transform.forward * movementSpeed * Input.GetAxis("Vertical") * 50;
-                horizontalVector = transform.right * movementSpeed * Input.GetAxis("Horizontal") * 50;
+                forwardVector = forward * movementSpeed * verticalMovement;
+                horizontalVector = right * movementSpeed * horizontalMovement;
 
                 moveDirection = forwardVector + horizontalVector;
 
+                transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.LookRotation (forward), lookSpeed);
                 // Just in case you wanna use jump  
                 // if (Input.GetButton("Jump"))
                 // {

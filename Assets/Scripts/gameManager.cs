@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class gameManager : MonoBehaviour
 {
+    public bool mobileTesting = true;
+    
     [Header("Game")]
     public int round = 1;
     public int transitionDuration;

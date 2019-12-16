@@ -51,17 +51,7 @@ public class touchInputController : MonoBehaviour
     void Update()
     {
         if (!managerScript.isPaused) {
-            if (!Application.isMobilePlatform) {
-                if (Input.GetButtonDown("Jump")) {
-                    RegisterRightHold();
-                }
-                if (Input.GetButtonUp("Jump")) {
-                    ReleaseRightHold();
-                }
-                if (Input.GetMouseButtonDown(0)) {
-                    RegisterRightTap();
-                }
-            } else {
+            if (Application.isMobilePlatform || managerScript.mobileTesting) {
                 if (Input.touchCount == 1) {
                     Touch touch = Input.GetTouch(0);
 
@@ -118,8 +108,10 @@ public class touchInputController : MonoBehaviour
                         verticalMovement = 0;
                     }
 
-                    rotationY -= -deltaTwoX * (xSensitivity / 10);
-                    rotationX -= deltaTwoY * (ySensitivity / 10);
+                    rotationY = deltaTwoX * (xSensitivity / 10);
+                    rotationX = deltaTwoY * (ySensitivity / 10);
+                    // rotationY -= -deltaTwoX * (xSensitivity / 10);
+                    // rotationX -= deltaTwoY * (ySensitivity / 10);
 
                     RefreshRightStick();
                 }
@@ -144,8 +136,10 @@ public class touchInputController : MonoBehaviour
                         verticalMovement = 0;
                     }
 
-                    rotationY -= -deltaOneX * (xSensitivity / 10);
-                    rotationX -= deltaOneY * (ySensitivity / 10);
+                    rotationY = deltaOneX * (xSensitivity / 10);
+                    rotationX = deltaOneY * (ySensitivity / 10);
+                    // rotationY -= -deltaOneX * (xSensitivity / 10);
+                    // rotationX -= deltaOneY * (ySensitivity / 10);
 
                     RefreshLeftStick();
                 }
@@ -166,6 +160,16 @@ public class touchInputController : MonoBehaviour
 
                 rightJoystickLastPos = new Vector2(rightJoystick.transform.position.x, rightJoystick.transform.position.y);
                 leftJoystickLastPos = new Vector2(leftJoystick.transform.position.x, leftJoystick.transform.position.y);
+            } else {
+                if (Input.GetButtonDown("Jump")) {
+                    RegisterRightHold();
+                }
+                if (Input.GetButtonUp("Jump")) {
+                    ReleaseRightHold();
+                }
+                if (Input.GetMouseButtonDown(0)) {
+                    RegisterRightTap();
+                }
             }
         }
     }
