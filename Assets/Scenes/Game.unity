@@ -836,6 +836,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 53418544}
   m_CullTransparentMesh: 0
+--- !u!84 &54786400
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  serializedVersion: 3
+  m_Width: 940
+  m_Height: 529
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthFormat: 1
+  m_ColorFormat: 8
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &57022411
 GameObject:
   m_ObjectHideFlags: 0
@@ -4695,7 +4730,7 @@ MonoBehaviour:
   - m_Height: 0.5
     m_Radius: 3
   - m_Height: -1
-    m_Radius: 3
+    m_Radius: 1
   m_LegacyHeadingBias: 3.4028235e+38
   m_Rigs:
   - {fileID: 1975649157}
@@ -6481,7 +6516,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 0
   m_RenderingPath: 1
-  m_TargetTexture: {fileID: 1594816322}
+  m_TargetTexture: {fileID: 54786400}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
@@ -6575,14 +6610,14 @@ MonoBehaviour:
   m_LookaheadIgnoreY: 0
   m_HorizontalDamping: 0
   m_VerticalDamping: 0
-  m_ScreenX: 0.33
-  m_ScreenY: 0.5
+  m_ScreenX: 0.15
+  m_ScreenY: 0.95
   m_DeadZoneWidth: 0
   m_DeadZoneHeight: 0
   m_SoftZoneWidth: 0.8
   m_SoftZoneHeight: 0.8
   m_BiasX: 0
-  m_BiasY: 0
+  m_BiasY: -0.000000074505806
   m_CenterOnActivate: 1
 --- !u!114 &419822396
 MonoBehaviour:
@@ -14350,6 +14385,41 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: -1468978419493999564, guid: 3bc8773b81b17a54ca83359255fde265, type: 3}
+--- !u!84 &674043592
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  serializedVersion: 3
+  m_Width: 940
+  m_Height: 529
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthFormat: 1
+  m_ColorFormat: 8
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &675374287
 GameObject:
   m_ObjectHideFlags: 3
@@ -20331,7 +20401,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1084566007}
-  m_LocalRotation: {x: -0.059535, y: 0.6897383, z: -0.057084326, w: -0.7193457}
+  m_LocalRotation: {x: 0.059747946, y: 0.61137354, z: 0.04637253, w: -0.78771967}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -26204,41 +26274,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4947010141303877467, guid: 3bc8773b81b17a54ca83359255fde265, type: 3}
---- !u!84 &1594816322
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  serializedVersion: 3
-  m_Width: 940
-  m_Height: 529
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthFormat: 1
-  m_ColorFormat: 8
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &1595848563
 GameObject:
   m_ObjectHideFlags: 0
@@ -26689,41 +26724,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: -2767619750131754386, guid: 4cec65b7c5b577a478bbcb9651154c55, type: 3}
---- !u!84 &1638240947
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  serializedVersion: 3
-  m_Width: 940
-  m_Height: 529
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthFormat: 1
-  m_ColorFormat: 8
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1001 &1638987346
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27783,7 +27783,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1716284217}
-  m_LocalRotation: {x: -0.059534665, y: 0.68973833, z: -0.057084676, w: -0.7193456}
+  m_LocalRotation: {x: -0.059534635, y: 0.68973833, z: -0.057084717, w: -0.71934557}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -28079,8 +28079,8 @@ MonoBehaviour:
   autoEnableOutlines: 0
   outlineCamera: {fileID: 416275487}
   outlineShaderMaterial: {fileID: 0}
-  renderTexture: {fileID: 1594816322}
-  extraRenderTexture: {fileID: 1638240947}
+  renderTexture: {fileID: 54786400}
+  extraRenderTexture: {fileID: 674043592}
 --- !u!81 &1741870485
 AudioListener:
   m_ObjectHideFlags: 0
@@ -28154,7 +28154,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1741870482}
-  m_LocalRotation: {x: 0.05953466, y: -0.6897383, z: 0.05708467, w: 0.7193456}
+  m_LocalRotation: {x: 0.05953485, y: -0.6897382, z: 0.057084482, w: 0.7193456}
   m_LocalPosition: {x: -4.8095765, y: -2.2800002, z: 27.967945}
   m_LocalScale: {x: 1.0000002, y: 0.9999999, z: 1.0000002}
   m_Children:
@@ -28191,7 +28191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07a10e48d3bd347f895a257055b2068f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mobileTesting: 1
+  mobileTesting: 0
   round: 0
   transitionDuration: 15
   startTransitionDuration: 0
@@ -28254,7 +28254,7 @@ MonoBehaviour:
   - {fileID: 7483834844842808563, guid: 1383350f3bb1d2d4c850a099c35c82b8, type: 3}
   snackCost: 200
   snackAmount: 100
-  playerMaxHealth: 50000
+  playerMaxHealth: 500
   playerFullBalloonStartCount: 25
   playerEmptyBalloonStartCount: 10
   isPaused: 0
@@ -32957,7 +32957,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1975649156}
-  m_LocalRotation: {x: -0.05953488, y: 0.6897383, z: -0.057084434, w: -0.7193457}
+  m_LocalRotation: {x: -0.059534665, y: 0.68973833, z: -0.057084676, w: -0.7193456}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
