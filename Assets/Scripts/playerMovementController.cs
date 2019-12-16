@@ -12,6 +12,7 @@ public class playerMovementController : MonoBehaviour
     private float rotationX;
     private Vector3 forwardVector;
     private Vector3 horizontalVector;
+    private Vector3 moveDirection = Vector3.zero;
     private playerAttackController attackScript;
     private playerHealth healthScript;
     private touchInputController inputScript;
@@ -33,38 +34,51 @@ public class playerMovementController : MonoBehaviour
     void Update()
     {
         if (!managerScript.isPaused) {
-            rotationX += Input.GetAxis("Mouse X") * lookSpeed;
+            if (attackScript.isAttacking) {
+                moveDirection = Vector3.zero;
+            }
             if (healthScript.isAlive) {
-                if (!Application.isMobilePlatform) {
-                    transform.localEulerAngles = new Vector3(0, rotationX, 0);
-                } else {
+                if (Application.isMobilePlatform) {
                     transform.localEulerAngles = new Vector3(0, inputScript.GetRotationY(), 0);
+                } else {
+                    rotationX += Input.GetAxis("Mouse X") * lookSpeed;
+                    transform.localEulerAngles = new Vector3(0, rotationX, 0);
                 }
             }
-            if (cc.isGrounded) {
-                // float horizontalMovement = Mathf.Clamp(inputScript.GetHorizontalMovement(), -speedLimit, speedLimit);
-                // float verticalMovement = Mathf.Clamp(inputScript.GetVerticalMovement(), -speedLimit, speedLimit);
+            if (cc.isGrounded && !attackScript.isAttacking && healthScript.isAlive)
+            {
+                // We are grounded, so recalculate
+                // move direction directly from axes
+                float horizontalMovement;
+                float verticalMovement;
+                // Use touch controls on mobile
+                if (Application.isMobilePlatform) {
+                    horizontalMovement = Mathf.Clamp(inputScript.GetHorizontalMovement(), -speedLimit, speedLimit);
+                    verticalMovement = Mathf.Clamp(inputScript.GetVerticalMovement(), -speedLimit, speedLimit);
+                } else {
+                    horizontalMovement = Input.GetAxis("Horizontal") * speedLimit;
+                    verticalMovement = Input.GetAxis("Vertical") * speedLimit;
+                }
 
-                // if (!Application.isMobilePlatform) {
-                //     horizontalMovement = Input.GetAxis("Horizontal") * 50;
-                //     verticalMovement = Input.GetAxis("Vertical") * 50;
+                forwardVector = transform.forward * movementSpeed * Input.GetAxis("Vertical") * 50;
+                horizontalVector = transform.right * movementSpeed * Input.GetAxis("Horizontal") * 50;
+
+                moveDirection = forwardVector + horizontalVector;
+
+                // Just in case you wanna use jump  
+                // if (Input.GetButton("Jump"))
+                // {
+                //     moveDirection.y = 5;
                 // }
-
-                // forwardVector = transform.forward * movementSpeed * verticalMovement;
-                // horizontalVector = transform.right * movementSpeed * horizontalMovement;
-
-                // if (!attackScript.isAttacking && healthScript.isAlive) {
-                //     cc.SimpleMove(forwardVector + horizontalVector);
-                // }
-
-                // Move forward / backward
-                Vector3 forwardVector = transform.TransformDirection(Vector3.forward) * movementSpeed * Input.GetAxis("Vertical") * 50;
-                Vector3 horizontalVector = transform.TransformDirection(Vector3.right) * movementSpeed * Input.GetAxis("Horizontal") * 50;
-                cc.SimpleMove(forwardVector + horizontalVector);
             }
-            else {
-                cc.SimpleMove(Vector3.forward * 0);
-            }
+
+            // Apply gravity. Gravity is multiplied by deltaTime twice (once here, and once below
+            // when the moveDirection is multiplied by deltaTime). This is because gravity should be applied
+            // as an acceleration (ms^-2)
+            moveDirection.y += Physics.gravity.y * Time.deltaTime;
+
+            // Move the controller
+            cc.Move(moveDirection * Time.deltaTime);
         }
     }
 }
