@@ -12407,7 +12407,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: UI
+  m_Text: SOUND EFFECTS
 --- !u!222 &917582913
 CanvasRenderer:
   m_ObjectHideFlags: 0

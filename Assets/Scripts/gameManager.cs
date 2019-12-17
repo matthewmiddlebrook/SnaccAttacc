@@ -19,7 +19,7 @@ public class gameManager : MonoBehaviour
     public int points = 0;
     public GameObject pauseMenu;
     public GameObject gameOverMenu;
-    public Text scoreText;
+    // public Text scoreText;
 
     [Header("Audio")]
     public AudioClip backgroundMusic;
@@ -312,26 +312,24 @@ public class gameManager : MonoBehaviour
         sfxAudioSource.clip = playerDefeatedSound;
         sfxAudioSource.Play();
 
-        scoreText.text = "ROUNDS SURVIVED: " + round;
-
         endGameScoreTexts[0].text = 
-            "ROUNDS:\t\t" + roundsSurvived.ToString() + 
-            "\nTIME:\t\t\t" + (int)surviveTime;
+            roundsSurvived.ToString() + 
+            "\n" + (int)surviveTime;
         endGameScoreTexts[1].text = 
-            "SPAWNED:\t" + catsSpawned.ToString() + 
-            "\nDEFEATED:\t" + catsDefeated.ToString();
+            catsSpawned.ToString() + 
+            "\n" + catsDefeated.ToString();
         endGameScoreTexts[2].text = 
-            "EARNED:\t" + beanBucksEarned.ToString() + 
-            "\nSPENT:\t\t" + beanBucksSpent.ToString();
+            beanBucksEarned.ToString() + 
+            "\n" + beanBucksSpent.ToString();
         endGameScoreTexts[3].text = 
-            "FALLEN:\t" + planksKnockedOff.ToString() + 
-            "\nREBUILT:\t" + planksPutUp.ToString();
+            planksKnockedOff.ToString() + 
+            "\n" + planksPutUp.ToString();
         endGameScoreTexts[4].text = 
-            "COLLECTED:\t\t" + waterBalloonsCollected.ToString() + 
-            "\nTHROWN:\t\t\t" + waterBalloonsThrown.ToString() + 
-            "\nPURCHASED:\t" + waterBalloonsBought.ToString();
+            waterBalloonsCollected.ToString() + 
+            "\n" + waterBalloonsThrown.ToString() + 
+            "\n" + waterBalloonsBought.ToString();
         endGameScoreTexts[5].text = 
-            "PURCHASED:\t" + snacksBought.ToString();
+            snacksBought.ToString();
 
         gameOverMenu.SetActive(true);
         

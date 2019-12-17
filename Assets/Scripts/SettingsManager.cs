@@ -27,7 +27,7 @@ public class SettingsManager : MonoBehaviour
 			UISlider.value = Mathf.Pow(10, value/20);
 		}
 
-        if (PlayerPrefs.HasKey("Difficulty")) {
+        if (DifficultySlider != null && PlayerPrefs.HasKey("Difficulty")) {
             DifficultySlider.value = PlayerPrefs.GetInt("Difficulty");
 		}
     }
@@ -47,6 +47,7 @@ public class SettingsManager : MonoBehaviour
     }
 
     void OnDisable() {
+        print("saved settings");
         PlayerPrefs.Save();
     }
 
