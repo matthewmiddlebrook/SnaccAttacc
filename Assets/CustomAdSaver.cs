@@ -22,13 +22,19 @@ public class CustomAdSaver : MonoBehaviour
 
     IEnumerator DownloadJson(string MediaUrl)
     {
-        UnityWebRequest request = UnityWebRequest.Get(MediaUrl);
-        yield return request.SendWebRequest();
-        if (request.isNetworkError || request.isHttpError)
-            Debug.Log(request.error);
-        else {
-            Texture2D texture = new DownloadHandlerFile(request);
-        }
+        using (UnityWebRequest webRequest = UnityWebRequest.Get(MediaUrl))
+        {
+            // Request and wait for the desired page.
+            yield return webRequest.SendWebRequest();
 
+            string[] pages = MediaUrl.Split('/');
+            int page = pages.Length - 1;
+
+            if (webRequest.isNetworkError) {
+                Debug.Log(pages[page] + ": Error: " + webRequest.error);
+            } else {
+                Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
+            }
+        }
     }
 }
