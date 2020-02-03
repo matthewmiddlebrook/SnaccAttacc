@@ -9,14 +9,17 @@ using EasyButtons;
 
 public class CustomAd : MonoBehaviour
 {
-    public CustomAdDatabaseLoader adDatabaseLoader;
     public Image adImage;
     public UnityEvent AfterLoading;
+
+    CustomAdDatabaseLoader adDatabaseLoader;
     CachedAdData ad;
 
-    void Start()
+    void OnEnable()
     {
-
+        adDatabaseLoader = GameObject.FindGameObjectWithTag("adDatabase").GetComponent<CustomAdDatabaseLoader>();
+        if (adDatabaseLoader.isLoaded)
+            LoadAd();
     }
 
     [Button]

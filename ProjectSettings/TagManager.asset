@@ -47,6 +47,7 @@ TagManager:
   - sfxAudioSource
   - roundTitle
   - musicAudioSource
+  - adDatabase
   layers:
   - Default
   - TransparentFX

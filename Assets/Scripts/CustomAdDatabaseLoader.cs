@@ -1,18 +1,37 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using EasyButtons;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 
 public class CustomAdDatabaseLoader : MonoBehaviour
 {
+    [HideInInspector]
+    public bool isLoaded;
+
     public string url;
+    public GameObject adPrefab;
+    public GameObject uiCanvas;
     List<CachedAdData> ads;
 
     void Start()
     {
         ads = new List<CachedAdData>();
+        LoadAds();
+    }
+
+    [Button]
+    public void LoadAds()
+    {
+        isLoaded = false;
         StartCoroutine(DownloadJson(url));
+    }
+
+    [Button]
+    public void ShowAd() {
+        GameObject newAd = Instantiate(adPrefab);
+        newAd.transform.SetParent(uiCanvas.transform, false);
     }
 
     IEnumerator DownloadJson(string MediaUrl)
@@ -41,27 +60,26 @@ public class CustomAdDatabaseLoader : MonoBehaviour
         AdData[] uncachedAds = JsonUtility.FromJson<AdDataArray>("{\"ads\":" + json + "}").ads;
 
         // We should cache the ads to the device in order to save data
-        foreach (AdData a in uncachedAds) {
-            StartCoroutine(CacheAd(a));
-        }
-
+        StartCoroutine(CacheAds(uncachedAds));
     }
 
-    IEnumerator CacheAd(AdData a)
+    IEnumerator CacheAds(AdData[] uncachedAds)
     {
-        UnityWebRequest request = UnityWebRequestTexture.GetTexture(a.imageLink);
-        yield return request.SendWebRequest();
-        if (request.isNetworkError || request.isHttpError) {
-            Debug.Log(request.error);
-        } else {
-            Texture2D texture = DownloadHandlerTexture.GetContent(request);
-            CachedAdData cachedAd = new CachedAdData();
-            cachedAd.adLink = a.adLink;
-            cachedAd.expirationDate = a.expirationDate;
-            cachedAd.image = texture;
-            ads.Add(cachedAd);
+        foreach (AdData a in uncachedAds) {
+            UnityWebRequest request = UnityWebRequestTexture.GetTexture(a.imageLink);
+            yield return request.SendWebRequest();
+            if (request.isNetworkError || request.isHttpError) {
+                Debug.Log(request.error);
+            } else {
+                Texture2D texture = DownloadHandlerTexture.GetContent(request);
+                CachedAdData cachedAd = new CachedAdData();
+                cachedAd.adLink = a.adLink;
+                cachedAd.expirationDate = a.expirationDate;
+                cachedAd.image = texture;
+                ads.Add(cachedAd);
+            }
         }
-
+        isLoaded = true;
     }
 
     public CachedAdData GetAd() {
