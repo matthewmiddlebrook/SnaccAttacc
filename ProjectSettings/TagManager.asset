@@ -48,6 +48,7 @@ TagManager:
   - roundTitle
   - musicAudioSource
   - adDatabase
+  - uiCanvas
   layers:
   - Default
   - TransparentFX

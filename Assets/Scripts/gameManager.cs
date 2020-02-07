@@ -19,7 +19,7 @@ public class gameManager : MonoBehaviour
     public int points = 0;
     public GameObject pauseMenu;
     public GameObject gameOverMenu;
-    // public Text scoreText;
+    private AdManager adManager;
 
     [Header("Audio")]
     public AudioClip backgroundMusic;
@@ -115,6 +115,8 @@ public class gameManager : MonoBehaviour
 
         musicAudioSource = GameObject.FindGameObjectWithTag("musicAudioSource").GetComponent<AudioSource>();
         sfxAudioSource = GameObject.FindGameObjectWithTag("sfxAudioSource").GetComponent<AudioSource>();
+
+        adManager = GameObject.FindGameObjectWithTag("adDatabase").GetComponent<AdManager>();
 
         pointsAddEffect.SetActive(false);
         pointsSubtractEffect.SetActive(false);
@@ -337,7 +339,11 @@ public class gameManager : MonoBehaviour
     }
 
     public void Restart() {
-        SceneManager.LoadScene("Game");
+        adManager.ShowAd("restart");
+    }
+
+    public void Quit() {
+        adManager.ShowAd("quit");
     }
 
     public void Pause() {
@@ -361,10 +367,6 @@ public class gameManager : MonoBehaviour
             waterBalloonScript balloon = b.GetComponent<waterBalloonScript>();
             balloon.Unpaused();
         }
-    }
-
-    public void Quit() {
-        SceneManager.LoadScene("Menu");
     }
 
     public void ShowLeaderboard() {

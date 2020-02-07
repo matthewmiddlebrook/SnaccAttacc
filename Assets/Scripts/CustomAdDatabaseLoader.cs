@@ -12,7 +12,6 @@ public class CustomAdDatabaseLoader : MonoBehaviour
 
     public string url;
     public GameObject adPrefab;
-    public GameObject uiCanvas;
     List<CachedAdData> ads;
 
     void Start()
@@ -31,7 +30,7 @@ public class CustomAdDatabaseLoader : MonoBehaviour
     [Button]
     public void ShowAd() {
         GameObject newAd = Instantiate(adPrefab);
-        newAd.transform.SetParent(uiCanvas.transform, false);
+        newAd.transform.SetParent(GameObject.FindGameObjectWithTag("uiCanvas").transform, false);
     }
 
     IEnumerator DownloadJson(string MediaUrl)
