@@ -16,6 +16,10 @@ public class SettingsManager : MonoBehaviour
 
     public Slider DifficultySlider;
 
+    public Slider CameraSlider;
+
+    public touchInputController touchInput;
+
     void OnEnable()
     {
         float value;
@@ -27,12 +31,16 @@ public class SettingsManager : MonoBehaviour
 			UISlider.value = Mathf.Pow(10, value/20);
 		}
 
-        if (DifficultySlider != null && PlayerPrefs.HasKey("Difficulty")) {
+        if (PlayerPrefs.HasKey("Difficulty")) {
             DifficultySlider.value = PlayerPrefs.GetInt("Difficulty");
+		}
+
+        if (PlayerPrefs.HasKey("CameraSensitivity")) {
+            CameraSlider.value = PlayerPrefs.GetInt("CameraSensitivity");
 		}
     }
 
-    void Start() {
+    void Awake() {
         if (PlayerPrefs.HasKey("Music")) {
             masterMixer.SetFloat(musicParamater, Mathf.Log10(PlayerPrefs.GetFloat("Music")) * 20);
         }
@@ -43,6 +51,18 @@ public class SettingsManager : MonoBehaviour
 
         if (!PlayerPrefs.HasKey("Difficulty")) {
             PlayerPrefs.SetInt("Difficulty", 1);
+        }
+
+        if (!PlayerPrefs.HasKey("CameraSensitivity")) {
+            PlayerPrefs.SetInt("CameraSensitivity", 5);
+        }
+
+        if (!PlayerPrefs.HasKey("CameraSensitivity")) {
+            PlayerPrefs.SetInt("CameraSensitivity", 3);
+        }
+        
+        if (touchInput != null) {
+            touchInput.setCameraSensitivity(PlayerPrefs.GetInt("CameraSensitivity"));
         }
     }
 
@@ -67,4 +87,12 @@ public class SettingsManager : MonoBehaviour
 	{
         PlayerPrefs.SetInt("Difficulty", (int)level);
 	}
+
+    public void SetCameraSensitivityLevel(float level)
+    {
+        PlayerPrefs.SetInt("CameraSensitivity", (int)level);
+        if (touchInput != null) {
+            touchInput.setCameraSensitivity(PlayerPrefs.GetInt("CameraSensitivity"));
+        }
+    }
 }

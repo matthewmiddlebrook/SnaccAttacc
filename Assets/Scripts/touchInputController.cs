@@ -31,6 +31,7 @@ public class touchInputController : MonoBehaviour
     private Vector2 leftTapEnd;
     private int rightHoldDelay;
     private int leftHoldDelay;
+    private int cameraSensitivity;
 
     private GameObject player;
     private gameManager managerScript;
@@ -108,10 +109,8 @@ public class touchInputController : MonoBehaviour
                         verticalMovement = 0;
                     }
 
-                    rotationY = deltaTwoX * (xSensitivity / 10);
-                    rotationX = deltaTwoY * (ySensitivity / 10);
-                    // rotationY -= -deltaTwoX * (xSensitivity / 10);
-                    // rotationX -= deltaTwoY * (ySensitivity / 10);
+                    rotationY = deltaTwoX * (xSensitivity / 50 * cameraSensitivity);
+                    rotationX = deltaTwoY * (ySensitivity / 50 * cameraSensitivity);
 
                     RefreshRightStick();
                 }
@@ -136,10 +135,8 @@ public class touchInputController : MonoBehaviour
                         verticalMovement = 0;
                     }
 
-                    rotationY = deltaOneX * (xSensitivity / 10);
-                    rotationX = deltaOneY * (ySensitivity / 10);
-                    // rotationY -= -deltaOneX * (xSensitivity / 10);
-                    // rotationX -= deltaOneY * (ySensitivity / 10);
+                    rotationY = deltaOneX * (xSensitivity / 50 * cameraSensitivity);
+                    rotationX = deltaOneY * (ySensitivity / 50 * cameraSensitivity);
 
                     RefreshLeftStick();
                 }
@@ -172,6 +169,10 @@ public class touchInputController : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void setCameraSensitivity(int sensitivity) {
+        cameraSensitivity = sensitivity;
     }
 
     void StartRightTouch(Touch touch) {
