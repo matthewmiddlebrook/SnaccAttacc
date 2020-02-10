@@ -9,7 +9,6 @@ public class CustomAdDatabaseLoader : MonoBehaviour
 {
     [HideInInspector]
     public bool isLoaded;
-
     public string url;
     public GameObject adPrefab;
     List<CachedAdData> ads;

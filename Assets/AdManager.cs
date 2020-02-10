@@ -25,6 +25,14 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
         }
     }
 
+    public void OnCustomAdDidFinish() {
+        if (afterAdAction == "restart") {
+            SceneManager.LoadScene("Game");
+        } else if (afterAdAction == "quit") {
+            SceneManager.LoadScene("Menu");
+        }
+    }
+
     public void OnUnityAdsReady(string placementId)
     {
         // If the ready Placement is rewarded, show the ad:
@@ -54,7 +62,8 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
     }
 
     public void ShowAd(string action) {
-        int randomness = Random.Range(0, 1);
+        float randomness = Random.Range(0f, 1f);
+        print(randomness);
         if (randomness >= 0.7) {
             ShowUnityAd(action);
         } else {

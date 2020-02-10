@@ -10,16 +10,42 @@ using EasyButtons;
 public class CustomAd : MonoBehaviour
 {
     public Image adImage;
+    public Text countdownText;
+    
+    public float waitingTime;
     public UnityEvent AfterLoading;
+    public UnityEvent AfterWaiting;
 
     CustomAdDatabaseLoader adDatabaseLoader;
+    AdManager adManager;
     CachedAdData ad;
+    bool hasWaited;
+    float waitTimer;
 
     void OnEnable()
     {
-        adDatabaseLoader = GameObject.FindGameObjectWithTag("adDatabase").GetComponent<CustomAdDatabaseLoader>();
+        hasWaited = false;
+        waitTimer = waitingTime;
+
+        GameObject adDB = GameObject.FindGameObjectWithTag("adDatabase");
+        
+        adManager = adDB.GetComponent<AdManager>();
+        adDatabaseLoader = adDB.GetComponent<CustomAdDatabaseLoader>();
+
         if (adDatabaseLoader.isLoaded)
             LoadAd();
+    }
+
+    void Update() {
+        if (!hasWaited) {
+            if (waitTimer <= 0) {
+                hasWaited = true;
+                AfterWaiting.Invoke();
+            } else {
+                waitTimer -= Time.deltaTime;
+                countdownText.text = ((int)(waitTimer+1)).ToString();
+            }
+        }
     }
 
     [Button]
@@ -37,6 +63,7 @@ public class CustomAd : MonoBehaviour
 
     public void CloseAd()
     {
+        adManager.OnCustomAdDidFinish();
         Destroy(gameObject);
     }
 }
