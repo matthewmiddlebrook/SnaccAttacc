@@ -96,7 +96,6 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
-    m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -3407,8 +3406,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: KITTIES ARE AFTER YOUR SNACKS! USE WATER BALLOONS TO DEFEND YOUR HOARD
-    OF NOMS. FILL BALLOONS AT WATER FOUNTAINS AND RESTOCK SNACKS AT VENDING MACHINES.
+  m_Text: KITTIES ARE AFTER YOUR SNACKS! USE WATER BALLOONS TO DEFEND YOUR HOARD OF
+    NOMS. FILL BALLOONS AT WATER FOUNTAINS AND RESTOCK SNACKS AT VENDING MACHINES.
     GOOD LUCK!
 --- !u!222 &1027781516
 CanvasRenderer:
@@ -4232,21 +4231,20 @@ MonoBehaviour:
 
 
 
-    <b>WATER
-    BALLOONS</b> ARE USED TO DEFEAT THE CATS. TAP ON THE SCREEN TO THROW A BALLOON
-    TOWARDS THE MARKED SPOT IN THE CENTER. EMPTY BALLOONS NEED TO BE FILLED UP AT
-    <b>WATER FOUNTAINS</b> AROUND THE BUILDING.
+    <b>WATER BALLOONS</b> ARE USED TO DEFEAT THE CATS. TAP ON THE SCREEN TO THROW
+    A BALLOON TOWARDS THE MARKED SPOT IN THE CENTER. EMPTY BALLOONS NEED TO BE FILLED
+    UP AT <b>WATER FOUNTAINS</b> AROUND THE BUILDING.
 
 
 
-    <b>WOODEN BARRIERS</b> KEEP
-    THE CATS OUT. HOWEVER, CATS WANT TO KNOCK THESE DOWN TO STEAL YOUR SNACKS!
+    <b>WOODEN BARRIERS</b> KEEP THE CATS OUT. HOWEVER, CATS WANT TO KNOCK THESE DOWN
+    TO STEAL YOUR SNACKS!
 
 
 
-    <b>BEAN
-    BUCKS</b> ARE EARNED BY DEFEATING CATS AND REPAIRING WOODEN BARRIERS, AND ARE
-    USED TO UNLOCK THE DOORS TO NEW AREAS AND PURCHASE ADDITIONAL BALLOONS AND SNACKS.'
+    <b>BEAN BUCKS</b> ARE EARNED BY DEFEATING CATS AND REPAIRING WOODEN BARRIERS,
+    AND ARE USED TO UNLOCK THE DOORS TO NEW AREAS AND PURCHASE ADDITIONAL BALLOONS
+    AND SNACKS.'
 --- !u!222 &1153696214
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4549,9 +4547,8 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1277700855}
   m_Enabled: 1
-  serializedVersion: 10
+  serializedVersion: 9
   m_Type: 1
-  m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 1
   m_Range: 10
@@ -4784,7 +4781,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1327787332
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4999,7 +4996,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1373795919
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6047,7 +6044,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1829568757
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6936,6 +6933,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6565466748586529201, guid: 04e6982b88770614ab3640a85ee0de88,
+        type: 3}
+      propertyPath: m_Name
+      value: AdDatabase
+      objectReference: {fileID: 0}
     - target: {fileID: 6565466748586529200, guid: 04e6982b88770614ab3640a85ee0de88,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6990,11 +6992,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6565466748586529201, guid: 04e6982b88770614ab3640a85ee0de88,
-        type: 3}
-      propertyPath: m_Name
-      value: AdDatabase
       objectReference: {fileID: 0}
     - target: {fileID: 6565466748586529207, guid: 04e6982b88770614ab3640a85ee0de88,
         type: 3}
