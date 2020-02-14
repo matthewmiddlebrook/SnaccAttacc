@@ -101,11 +101,11 @@ public class playerMovementController : MonoBehaviour
             // Apply gravity. Gravity is multiplied by deltaTime twice (once here, and once below
             // when the moveDirection is multiplied by deltaTime). This is because gravity should be applied
             // as an acceleration (ms^-2)
-            // moveDirection.y += Physics.gravity.y * Time.deltaTime;
+            moveDirection.y += Physics.gravity.y * Time.deltaTime;
 
             // Move the controller
-            cc.SimpleMove(moveDirection);
-            // cc.Move(moveDirection * Time.deltaTime);
+            // Can't use simple move because for some reason gravity breaks and you don't fall
+            cc.Move(moveDirection * Time.deltaTime);
         }
     }
 }
