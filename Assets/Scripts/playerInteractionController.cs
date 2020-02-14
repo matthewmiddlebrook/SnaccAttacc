@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using cakeslice;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 public class playerInteractionController : MonoBehaviour
 {
@@ -39,6 +40,7 @@ public class playerInteractionController : MonoBehaviour
         		activeObject.GetComponent<barrierScript>().Interact();
         	}
         	else if (type == "refillStation" && attackScript.emptyBalloonCount > 0) {
+				AnalyticsEvent.ItemSpent(AcquisitionType.Soft, "game", 1, "emptyBalloons", "balloons", managerScript.round.ToString());
         		attackScript.FillBalloon();
         	}
         	else if (type == "blockage" &&

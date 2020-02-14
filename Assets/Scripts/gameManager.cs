@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Analytics;
 
 public class gameManager : MonoBehaviour
 {
@@ -100,10 +101,11 @@ public class gameManager : MonoBehaviour
     public int planksPutUp;
     public Text[] endGameScoreTexts;
 
-
     // Start is called before the first frame update
     void Start()
     {
+        AnalyticsEvent.GameStart();
+
         difficulty = PlayerPrefs.GetInt("Difficulty");
 
         roundTitle = GameObject.FindGameObjectWithTag("roundTitle").GetComponent<UnityEngine.UI.Text>();
@@ -208,6 +210,7 @@ public class gameManager : MonoBehaviour
         remainingTransitionTime = transitionDuration;
 
         if (round != 0) {
+            AnalyticsEvent.LevelComplete(round.ToString());
             infoTextObject.transform.GetChild(1).GetComponent<UnityEngine.UI.Text>().text = 
                 "ROUND " + round + " OVER";
             infoTextObject.GetComponent<Animator>().Play("infoTextFade");
@@ -236,6 +239,7 @@ public class gameManager : MonoBehaviour
 
     void BeginRound() {
         transitioning = false;
+        AnalyticsEvent.LevelStart(round.ToString());
 
         sfxAudioSource.clip = roundSound;
         sfxAudioSource.Play();
@@ -297,18 +301,23 @@ public class gameManager : MonoBehaviour
     }
 
     public void PurchaseBalloons() {
+        AnalyticsEvent.ItemAcquired(AcquisitionType.Soft, "game", pickUpBalloonAmount, "emptyBalloons", "balloons", round.ToString());
         SubtractPoints(balloonPackCost);
         GameObject.FindGameObjectWithTag("player").GetComponent<playerAttackController>().AddEmptyBalloons(pickUpBalloonAmount);
         waterBalloonsBought += pickUpBalloonAmount;
     }
 
     public void PurchaseSnack() {
+        AnalyticsEvent.ItemAcquired(AcquisitionType.Soft, "game", snackAmount, "snacks", "snacks", round.ToString());
         SubtractPoints(snackCost);
         snacksBought += snackAmount;
     }
 
 
     public void GameOver() {
+        AnalyticsEvent.LevelFail(round.ToString());
+        AnalyticsEvent.GameOver(round.ToString());
+
         gameOver = true;
 
         sfxAudioSource.clip = playerDefeatedSound;
@@ -343,6 +352,7 @@ public class gameManager : MonoBehaviour
     }
 
     public void Quit() {
+        AnalyticsEvent.LevelQuit(round.ToString());
         adManager.ShowAd("quit");
     }
 
@@ -358,7 +368,6 @@ public class gameManager : MonoBehaviour
     }
 
     public void Resume() {
-        print("Unpaused");
         isPaused = false;
         pauseMenu.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;

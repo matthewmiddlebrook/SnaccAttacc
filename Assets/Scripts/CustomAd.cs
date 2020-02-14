@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 
 using EasyButtons;
+using UnityEngine.Analytics;
 
 public class CustomAd : MonoBehaviour
 {
@@ -51,6 +52,7 @@ public class CustomAd : MonoBehaviour
     [Button]
     public void LoadAd()
     {
+        AnalyticsEvent.AdStart(false, "custom");
         ad = adDatabaseLoader.GetAd();
         adImage.sprite = Sprite.Create(ad.image, new Rect(0, 0, ad.image.width, ad.image.height), new Vector2(0.5f, 0.5f));
         AfterLoading.Invoke();
@@ -63,6 +65,7 @@ public class CustomAd : MonoBehaviour
 
     public void CloseAd()
     {
+        AnalyticsEvent.AdComplete(false, "custom");
         adManager.OnCustomAdDidFinish();
         Destroy(gameObject);
     }
